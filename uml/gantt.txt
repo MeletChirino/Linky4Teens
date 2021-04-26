@@ -1,18 +1,64 @@
-@startuml
+@startgantt
 saturday are closed
 sunday are closed
-2021-05-15 is colored in salmon
+
 Project starts 2021-04-26
+[Debut du stage] starts 2021-04-26
+2021-06-11 is colored in green
+[Mi-stage] starts 2021-06-11
+2021-07-30 is colored in salmon
+[Fin du stage] starts 2021-07-30
+
+' [Mi-stage] displays on same row as [Debut du stage]
+' [Fin du stage] displays on same row as [Debut du stage]
+' [Tests de performance] starts at [Monter Barriere IR]'s end
+
 -- Planning --
-[New components list] lasts 3 days
-[New components list] lasts 3 days
-[Gantt Diagram] lasts 1 day
+[Gantt Diagram] lasts 2 days
 [Gantt Diagram] starts 2021-04-26
+[Liste de composants] starts 2021-04-27
+[Commander les composants] starts 2021-04-28
+[Livraison des composants] starts 2021-05-03
+
+-- Documentation --
+[Description des modes de fonctionement] lasts 4 days
+[Description des modes de fonctionement] starts 2021-04-27
+
 -- Temoin --
-[New Dock Build] lasts 5 days
-then [New components list] lasts 4 days 
-[New Dock Build] starts at [New components list]'s end
+[Tester accelerometre avec Carte SD] lasts 3 days
+[Livraison des composants] -> [Tester accelerometre avec Carte SD]
+Then [Conception electronique] lasts 2 days
+Then [Fabrication du carte PCB] lasts 5 days
+Then [Conception Mechanique] lasts 2 days
+Then [Manufacture chez CampusFab] lasts 5 days
+Then [Monter Temoin] lasts 1 day
+
+[Tests de performance] lasts 2 days
+
 -- Zone IR --
+[Tester barrieres IR] lasts 3 days
+[Livraison des composants] -> [Tester barrieres IR] 
+Then [Conception electronique IR] lasts 2 days
+Then [Fabrication du carte PCB IR] lasts 5 days
+Then [Conception Mechanique IR] lasts 2 days
+Then [Manufacture chez CampusFab IR] lasts 5 days
+Then [Monter Barriere IR] lasts 1 day
+
+[Monter Temoin] -> [Tests de performance]
+[Monter Barriere IR] -> [Tests de performance]
 -- Support --
+[Prototype de Nouveau dock] lasts 3 days 
+[Conception electronique] -> [Prototype de Nouveau Dock]
+Then [Conception electronique Dock] lasts 2 days
+Then [Fabrication du carte PCB Dock] lasts 5 days
+Then [Conception Mechanique Dock] lasts 2 days
+Then [Manufacture chez CampusFab Dock] lasts 5 days
+Then [Monter Dock] lasts 1 day
+[Test de performance 2] lasts 2 days
+[Monter Dock] -> [Test de performance 2]
 -- Interface --
-@enduml
+[Manipuler les donnes] lasts 2 days and starts at [Test de performance 2]'s end
+Then [Envoyer les donnes vers Android] lasts 3 days
+Then [Test de performance 3] lasts 2 days
+
+@endgantt
