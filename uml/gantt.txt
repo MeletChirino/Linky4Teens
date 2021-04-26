@@ -1,0 +1,18 @@
+@startuml
+saturday are closed
+sunday are closed
+2021-05-15 is colored in salmon
+Project starts 2021-04-26
+-- Planning --
+[New components list] lasts 3 days
+[New components list] lasts 3 days
+[Gantt Diagram] lasts 1 day
+[Gantt Diagram] starts 2021-04-26
+-- Temoin --
+[New Dock Build] lasts 5 days
+then [New components list] lasts 4 days 
+[New Dock Build] starts at [New components list]'s end
+-- Zone IR --
+-- Support --
+-- Interface --
+@enduml
