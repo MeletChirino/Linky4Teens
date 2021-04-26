@@ -47,7 +47,7 @@ Then [Monter Barriere IR] lasts 1 day
 [Monter Temoin] -> [Tests de performance]
 [Monter Barriere IR] -> [Tests de performance]
 -- Support --
-[Prototype de Nouveau dock] lasts 3 days 
+[Prototype de Nouveau Dock] lasts 3 days 
 [Conception electronique] -> [Prototype de Nouveau Dock]
 Then [Conception electronique Dock] lasts 2 days
 Then [Fabrication du carte PCB Dock] lasts 5 days
