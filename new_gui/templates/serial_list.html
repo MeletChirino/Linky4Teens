@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block MainContent %}
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Select Port:</h1>
+                        <form method="POST" action="{% url "report_page" %}">
+                          {% csrf_token %}
+                          <select name="port" id="cars">
+                            {% for port in serial_ports_list %}
+                            <option value="{{port}}">{{port}}</option>
+                            {% endfor %}
+                          </select>
+                          <br><br>
+						  Ecrivez la distance jusqua la premier zone de transmission
+						  <input name="distance1" type="number">
+                          <br><br>
+						  Ecrivez la distance jusqua la deuxieme zone de transmission
+						  <input name="distance2" type="number">
+                          <br><br>
+						  Ecrivez la distance jusqua la troisieme zone de transmission
+						  <input name="distance3" type="number">
+                          <br><br>
+						  Ecrivez la distance jusqua la quatrieme zone de transmission
+						  <input name="distance4" type="number">
+                          <br><br>
+						  Ecrivez la distance jusqua la cinquieme zone de transmission
+						  <input name="distance5" type="number">
+                          <br><br>
+						  Ecrivez la distance de la zone de transmission
+						  <input name="distancet" type="number">
+                          <br><br>
+
+                          <input type="submit" value="Submit">
+                        </form>
+                    </div>
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; UT3 Paul Sabatier</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
+            {% endblock %}
