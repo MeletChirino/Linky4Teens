@@ -19,15 +19,8 @@ La liste suivant a les composants pour chaque temoin
 - [Accelerometre MMA8451Q](https://fr.rs-online.com/web/p/capteurs-de-mouvement/9054665/?cm_mmc=FR-PLA-DS3A-_-google-_-CSS_FR_FR_Semi-conducteurs_Whoop-_-(FR:Whoop!)+Capteurs+de+mouvement-_-9054665&matchtype=&aud-827186183886:pla-327734554961&gclid=CjwKCAjw7J6EBhBDEiwA5UUM2oW1W8vop3575mAo5MsFiMbNIFEsHiZGQo-nn34GoZg6ti1SngtyDBoCaEUQAvD_BwE&gclsrc=aw.ds)
 - [Moteur de vibration](https://www.amazon.fr/vibration-Excentrique-%C3%A9lectriques-excentrique-Instrument/dp/B07WP2PGBW/ref=pd_rhf_dp_p_img_3?_encoding=UTF8&psc=1&refRID=1AC6J5ZZRJQBSAJGPYXA)
 - [Adaptateur pour carte MicroSD](https://www.amazon.fr/kwmobile-Module-Carte-Micro-microcontr%C3%B4leurs/dp/B06XHJTGGC/ref=asc_df_B06XHJTGGC/?tag=googshopfr-21&linkCode=df0&hvadid=228764001054&hvpos=&hvnetw=g&hvrand=10466498626718432929&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9055222&hvtargid=pla-422342020223&psc=1)
-<<<<<<< HEAD
 
 - [Connectiques MOLEX :](https://www.amazon.fr/Connecteur-Femelle-Connecteurs-Broches-Terminals/dp/B082ZLYRRN/ref=sr_1_25?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=molex&qid=1619515789&sr=8-25)
-=======
-[Connectiques MOLEX :](https://www.amazon.fr/Connecteur-Femelle-Connecteurs-Broches-Terminals/dp/B082ZLYRRN/ref=sr_1_25?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=molex&qid=1619515789&sr=8-25)
-- 4 pins (3)
-- 3 pins (1)
-- 2 pins (1)
->>>>>>> 3db976aecd2c11fba816842ccb1054f6823bec72
 ## Barriere IR
 - [Circuit integre 555](https://www.amazon.fr/pi%C3%A8ces-pcs-555-Timer-Just-Honest/dp/B014UWTDLU/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=timer+555&qid=1619515897&sr=8-5)
 - [LED IR haute puissance (2)](https://fr.rs-online.com/web/p/led-ir/8769423/)
