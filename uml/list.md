@@ -1,14 +1,15 @@
 # List of components
 ## Temoin 
 La liste suivant a les composants pour chaque temoin
-- [ATMega328p](https://www.amazon.fr/ATMEGA328P-Atmel-AVR-Micro-contr%C3%B4leur/dp/B019ILOE5I/ref=sr_1_14?dchild=1&keywords=ATmega328&qid=1619514351&sr=8-14)
+- [ATMega328p](https://www.lextronic.fr/microcontroleur-atmega328p-29869.html)
+- [Raspberry Pi 3B+](https://www.lextronic.fr/carte-raspberry-pi-3-b-35081.html)
 - [Chargeur TP4056](https://www.amazon.fr/ZHITING-Chargeur-Batterie-Protection-Fonctions/dp/B0859X38WL/ref=sr_1_3_sspa?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=tp4056&qid=1619514385&sr=8-3-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzNE5YUDRQWEQxTUY4JmVuY3J5cHRlZElkPUEwMDI4MjgyMlowUEpZNzJLSU9VMCZlbmNyeXB0ZWRBZElkPUEwNjIyMDcxMkkwREFPSldJUzlPMiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
 - [Bouton poussoir](https://www.amazon.fr/BOJACK-Interrupteurs-bouton-poussoir-dassortiment-dinterrupteurs/dp/B07ZN11155/ref=sr_1_3_sspa?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=243Q1D452AJHH&dchild=1&keywords=bouton+poussoir&qid=1619514419&sprefix=bouton+pous%2Caps%2C183&sr=8-3-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUE4Vk8xUko3QjVEQUEmZW5jcnlwdGVkSWQ9QTA0NTcxNjhSUzNDNTNJWDFHSFUmZW5jcnlwdGVkQWRJZD1BMDU4MjY0NDI0TVUzVDZJSEkwTjAmd2lkZ2V0TmFtZT1zcF9hdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl)
 - 220 Ohms resistor (3)
 - 10k Ohms resistor (1)
 - [Buzzer](https://fr.rs-online.com/web/p/buzzers-magnetiques/6221455/)
 - 100 Ohms resistor (1)
-- [Quartz 16MHz](https://www.amazon.fr/Just-Honest-Oscillateur-Crystal-Condensateur-c%C3%A9ramique/dp/B016RYCQS6/ref=sr_1_4?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3K06232H351EW&dchild=1&keywords=quartz+16mhz&qid=1619514468&sprefix=quartz+16%2Caps%2C162&sr=8-4)
+- [Quartz 16MHz](https://www.lextronic.fr/quartz-16-mhz-4079.html)
 - 22pF Ceramic capacitor (2)
 - [Led RGB](https://fr.rs-online.com/web/p/led/8614307/)
 - [Recepteur IR](https://fr.rs-online.com/web/p/recepteurs-ir/0570578/)
