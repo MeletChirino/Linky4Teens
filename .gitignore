@@ -1,3 +1,7 @@
 venv/
 test/
 **.png
+
+# -- Arduino exemples --
+arduino/exemples/
+circuits/
