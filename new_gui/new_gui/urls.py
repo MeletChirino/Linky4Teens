@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 #local views
-from .views import serial_list, report_page
+from .views import serial_list, report_page, i2c_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i2c/<int:number>', i2c_page),
     path('home/', serial_list, name='home'),
     path('graph/', report_page, name='report_page'),
 ]

@@ -8,6 +8,21 @@ from .temoin import Temoin
 #matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+#i2c and electronic modules
+from smbus import SMBus
+
+def i2c_page(requesti, number):
+    bus = SMBus(1) # indicates /dev/i2c-1
+    if number == 1:
+        bus.write_byte(0x8, 0x1)
+        return redirect("home")
+    elif number == 2:
+        bus.write_byte(0x9, 0x1)
+        return redirect("home")
+    else:
+        bus.write_byte(0x8, 0x0)
+        bus.write_byte(0x9, 0x0)
+        return redirect("home")
 
 def serial_list(request):
     serial_ports_list = serial_ports()
