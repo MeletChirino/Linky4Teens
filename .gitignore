@@ -5,3 +5,6 @@ test/
 # -- Arduino exemples --
 arduino/exemples/
 circuits/
+
+# -- temporary files --
+**.swp
