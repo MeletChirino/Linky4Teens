@@ -8,3 +8,6 @@ circuits/
 
 # -- temporary files --
 **.swp
+
+# -- Doxygen Files --
+**/html/**

@@ -1,15 +1,39 @@
+/**
+   @file temoin.ino
+
+   @section description Description
+   An example sketch demonstrating how to use Doxygen style comments for
+   generating source code documentation with Doxygen.
+
+   @section circuit Circuit
+   - Red LED connected to pin D2.
+   - Momentary push button connected to pin D3.
+
+   @section libraries Libraries
+   - Arduino_LSM6DS3 (https://github.com/arduino-libraries/Arduino_LSM6DS3)
+     - Interacts with on-board IMU.
+
+   @section notes Notes
+   - Comments are Doxygen compatible.
+
+   @section todo TODO
+   - Don't use Doxygen style formatting inside the body of a function.
+
+   @section author Author
+   - Created by Melet Chirino on 30/04/2021.
+*/
+
 //----------------- SD card config -----------------
 #include <SD.h>
 #include <SPI.h>
 
-File data_file;
-int pinCs = 8;
+File data_file; /*!< Objet pour les fichier dedans la carte SD */
+int pinCs = 8; /*!< Pin pour la selection du carte SD avec le bus SPI */
 //----------------- SD card config -----------------
 
 //----------------- Grip sensor config -----------------
 #include "GripSensor.h"
-/* position pins */
-GripSensor grip_sensor(10, 7);
+GripSensor grip_sensor(10, 7); /*!< Objet des capteur de grip */
 //----------------- Grip sensor config -----------------
 
 //----------------- Accelerometer config -----------------
@@ -17,39 +41,38 @@ GripSensor grip_sensor(10, 7);
 #include <Adafruit_MMA8451.h>
 #include <Adafruit_Sensor.h>
 
-Adafruit_MMA8451 mma = Adafruit_MMA8451();
+Adafruit_MMA8451 mma = Adafruit_MMA8451(); /*!< Acceleromettre connecté par le bus I2C */
 
 //----------------- Accelerometer config -----------------
 
 
 //----------------- RGB Led config -----------------
 #include "RGBLed.h"
-/* pins for RGB Led */
+
 RGBLed led_rgb(
   6,//red
   3,//green
   9//blue
-);
+); /*!< Objet de la LED RGB */
 //----------------- RGB Led config -----------------
 
 //----------------- Vibrateur config -----------------
 #include "Vibrateur.h"
-/* pins for Vibration motor*/
-Vibrateur vibz(5);
+Vibrateur vibz(5);/*!< Objet pour le moteur vibrateur */
 //----------------- Vibrateur config -----------------
 
 //----------------- Serial parameters -----------------
-String inputString = "";         // a String to hold incoming data
-bool stringComplete = false, send_data = false;  // whether the string is complete
+String inputString = ""; /*!< a String to hold incoming data */
+bool stringComplete = false, send_data = false;/*!< whether the string is complete*/
 //----------------- Serial parameters -----------------
 
 
-const byte interruptPin = 2;
-volatile byte state = LOW;
-int delta = 0;
+const byte interruptPin = 2; /*!< Pin d'interruption utilisé pour le recepteur InfraRouge */
+int delta = 0; /*!< Variable utilisé pour savoir le type de zone capté avec la barrierre InfraRouge */
 double new_millis = 0, last_millis = 0;
-int status_ = 0;
+int status_ = 0; /*!< Il y a un status pour savoir la partie de la course où se trouve le temoin */
 
+/// \brief Fonction par defaut d'arduino pour initialiser toutes les variables.
 void setup() {
   Serial.begin(115200);
 
@@ -104,23 +127,13 @@ void setup() {
 }
 
 
-
+/// \brief Fonction par defaut d'arduino qui s'execute en loop de mode indefini
 void loop() {
   int i;
   vibz.stop();
 
   if (status_ == 4) {
     led_rgb.set_color(100, 0, 100);
-    /*
-      for (int i = 0; i < max_laps; i++) {
-      Serial.print("\n\nLap "); Serial.println(i);
-      Serial.print("t1 "); Serial.print(race_stats[0][i]);
-      Serial.print("t2 "); Serial.print(race_stats[1][i]);
-      Serial.print("t3 "); Serial.print(race_stats[2][i]);
-      Serial.print("ok = "); Serial.println(race_stats[3][i]);
-      }
-      delay(10000);
-    */
     if (send_data) {
       data_file = SD.open("DATA.TXT");
       if (data_file) {
@@ -228,12 +241,15 @@ void loop() {
   delay(30);
 }
 
-//IR detecting protocol by interrupts
+/// \brief Protocol de detection des barrieres IR
+/// \param delta=47 Debut de la course
+/// \param delta=72 Debut de la zone de transmission
+/// \param delta=118 Fin de la zone de trasnmission
+/// \param delta=32 Fin de la Course
 void detect_zone() {
   new_millis = millis();
   delta = new_millis - last_millis;
   last_millis = new_millis;
-
 
   if (delta == 47)
     status_ = 1;//race start
@@ -248,7 +264,10 @@ void detect_zone() {
   Serial.println(status_);
 }
 
-// funciton to save information
+/// \brief Fonction pour enregistrer les donnés dans la carte SD
+/* \detail Le microcontroleur enregistre les donnés en format CSV avec le format suivant :
+ *  status, low_grip, high_grip, accel_x, accel_y, accel_z, milliseconds.
+ */
 void save_info() {
   mma.read();
   data_file = SD.open("data.txt", FILE_WRITE);

@@ -1,7 +1,13 @@
 #ifndef GripSensor_h
 #define GripSensor_h
 #include "RGBLed.h"
-
+/** 
+ * \class GripSensor
+ * \brief Classe qui gere les capteur touch.
+ * \details Cette classe gere les deux capteurs touch
+ * qui sont utilisées pour savoir si l'athlete a bien pris 
+ * le temoin par un des deux cotés.
+ */
 class GripSensor {
   private:
     int _low_position_pin, _high_position_pin;
@@ -13,14 +19,11 @@ class GripSensor {
     GripSensor(int, int);
     void init();
     void read_grip();
-    void print_status(bool);
     bool grip_ok();
     bool high_grip();
     void print_status();
     bool low_grip();
-    void enable_debug();
     bool good_relay();
-    void reset_relay(RGBLed);
 };
 
 #endif
