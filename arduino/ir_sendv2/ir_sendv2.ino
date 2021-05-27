@@ -2,22 +2,18 @@
    @file ir_sendv2.ino
 
    @section description Description
-   An example sketch demonstrating how to use Doxygen style comments for
-   generating source code documentation with Doxygen.
+	Cette appareil envoie des pulses vers le temoin dans la course pour savoir 
+	la zone ou il se trouve. L'appareil a une conmutateur pour selectioner le
+	comportement qu'il aura. Il a ete concu modulairement pour et donc nous pouvons 
+	changer les LED juste en modifiant la saortie
 
    @section circuit Circuit
-   - Red LED connected to pin D2.
-   - Momentary push button connected to pin D3.
-
-   @section libraries Libraries
-   - Arduino_LSM6DS3 (https://github.com/arduino-libraries/Arduino_LSM6DS3)
-     - Interacts with on-board IMU.
-
-   @section notes Notes
-   - Comments are Doxygen compatible.
-
-   @section todo TODO
-   - Don't use Doxygen style formatting inside the body of a function.
+	- Il y a une circuit qui fait une onde carre de 38KHz et le microcontroleur le pilote
+	avec un transisteur. L'onde carre fait rouler la LED IR pour envoye une signal reconnue
+	par le recepteur IR dans le temoin.
+	-Le module du led Peut etre change pour une autre LED qui soit plus ou moins puissante.
+	-Le micrcontroleur marche avec un regulateur de 5V alors que le reste du circuit marche 
+	avec la tension de la batterie.
 
    @section author Author
    - Created by Melet Chirino on 12/05/2021.

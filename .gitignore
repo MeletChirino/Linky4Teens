@@ -11,3 +11,6 @@ circuits/
 
 # -- Doxygen Files --
 **/html/**
+new_gui/db.sqlite3
+arduino/temoin/temoin.ino
+new_gui/new_gui/__pycache__/

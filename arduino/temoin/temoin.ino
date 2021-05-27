@@ -2,22 +2,30 @@
    @file temoin.ino
 
    @section description Description
-   An example sketch demonstrating how to use Doxygen style comments for
-   generating source code documentation with Doxygen.
+   Ce sketch manage les etats du temoin pendant qu'il est en course 
+   en plus il envoie les donnes enregistres dans la carte SD qui est
+   dedans.
 
    @section circuit Circuit
-   - Red LED connected to pin D2.
-   - Momentary push button connected to pin D3.
-
+   - Led RGB connecte aux pins 3, 6 et 9
+	- Accelerometre connecte au bus I2C
+	- Carte micro SD connecte au bus SPI
+	- Capteurs touch connectes aux pins 10 et 7
+	- Batterie rechargeable a 3.7V
+	- Regulateur de tension qui augmente la tension jusqu'a 5V pour le microcontroleur
+	- Moteur vibrateur connecte a travers d'un transisteur au pin 5
+	- Connection vers le port serial d'une raspberry avec les pins RX et TX
+	
    @section libraries Libraries
-   - Arduino_LSM6DS3 (https://github.com/arduino-libraries/Arduino_LSM6DS3)
-     - Interacts with on-board IMU.
+	- Librarie du Carte SD
+	- Librarie de l'accelerometre
 
    @section notes Notes
-   - Comments are Doxygen compatible.
+	- Les circuits on ete developpes avec Proteus 8 mais il y a une version en Eagle 
+	- Cette programme Envoie des donnes a une raspberry vers le port serial
 
    @section todo TODO
-   - Don't use Doxygen style formatting inside the body of a function.
+	- Ameliorer le protocol de communication IR ou utiliser une technologie plus robuste en conditions sportives
 
    @section author Author
    - Created by Melet Chirino on 30/04/2021.
