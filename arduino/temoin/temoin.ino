@@ -97,7 +97,7 @@ void setup() {
   led_rgb.set_color(100, 100, 100);
 
   //sd card init
-  pinMode(pinCs, OUTPUT);
+  pinMode(pinCs, OUTPUT);/*!< Il faut le declarer cmme input selon la page */
 
   //sd card init
   if (SD.begin()) {
@@ -131,7 +131,7 @@ void setup() {
   Serial.print("Range = "); Serial.print(2 << mma.getRange());
   Serial.println("G");
 
-  status_ = 1;
+  status_ = 4; 
 }
 
 
@@ -143,20 +143,21 @@ void loop() {
   if (status_ == 4) {
     led_rgb.set_color(100, 0, 100);
     if (send_data) {
-      data_file = SD.open("DATA.TXT");
-      if (data_file) {
+      if (SD.exists("data2.txt")) {
+        data_file = SD.open("data2.txt");
         while (data_file.available()) {
           Serial.write(data_file.read());
         }
         data_file.close();
       } else {
         Serial.println("E: Problem with SD card");
+        //Serial.println(SD.exists("data2.txt"));
       }
       send_data = 0;
     }
     if (inputString == "ok?\n") Serial.println("ok");
     if (inputString == "start\n") {
-      //Serial.println("toogle transmisison");
+      Serial.println("toogle transmisison");
       if (send_data) send_data = 0;
       else send_data = 1;
       //Serial.println("send_data != send_data");
@@ -231,7 +232,7 @@ void loop() {
 
       //else you do that
 
-      //finally you go back to state = 2
+      //finally you go back to state = 1
       break;
 
     // ******************* end race *******************
@@ -298,5 +299,25 @@ void save_info() {
     //Serial.println("written");
   } else {
     Serial.println("Error while saving info");
+  }
+}
+/*
+  SerialEvent occurs whenever a new data comes in the hardware serial RX. This
+  routine is run between each time loop() runs, so using delay inside loop can
+  delay response. Multiple bytes of data may be available.
+*/
+void serialEvent() {
+  //Serial.println("Serial Event!!\n");
+  //serial_blink(4, 300);
+  while (Serial.available()) {
+    // get the new byte:
+    char inChar = (char)Serial.read();
+    // add it to the inputString:
+    inputString += inChar;
+    // if the incoming character is a newline, set a flag so the main loop can
+    // do something about it:
+    if (inChar == '\n') {
+      stringComplete = true;
+    }
   }
 }
