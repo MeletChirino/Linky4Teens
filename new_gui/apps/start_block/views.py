@@ -44,10 +44,6 @@ def results(request):
 
     athlete = '1'
     file_name = "static/data/2021_6_8_10_14_38.csv"
-    raw_data, keys_list = read_csv_data(file_name)
-    print(keys_list)
-    l_force_1 = get_dict_row('l_force_1', raw_data)
-    print(l_force_1)
     data = {
             "holi": "holi",
             }
