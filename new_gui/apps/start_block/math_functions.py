@@ -37,23 +37,28 @@ def graph_data(file_name):
     for key in left_forces:
         force = raw2list(key, raw_data)
         forces.append(force)
-    import pdb; pdb.set_trace()
-    plot_feet_data(file_name, forces, time)
+    plot_feet_data(file_name, forces, time, 'Pied Gauche')
     #right feet data
     left_forces = ['r_force_1', 'r_force_2', 'r_force_3', 'r_force_4']
     forces = []
     for key in left_forces:
         force = raw2list(key, raw_data)
         forces.append(force)
-    #plot_feet_data(file_name, forces, time)
+    plot_feet_data(F"{file_name}2", forces, time, 'Pied Droit')
 
 
-def plot_feet_data(file_name, forces, time):
+def plot_feet_data(file_name, forces, time, title):
 
+    '''
+    force_4 = np.array(forces[0])
     force_4 = np.array(forces[0])
     force_1 = np.array(forces[1])
     force_2 = np.array(forces[2])
-    force_3 = np.array(forces[3])
+    '''
+    force_1 = forces[0]
+    force_2 = forces[1]
+    force_3 = forces[2]
+    force_4 = forces[3]
 
     i = 0
     mean_force = []
@@ -64,18 +69,22 @@ def plot_feet_data(file_name, forces, time):
         i += 1
     mean_force = np.array(mean_force)
 
-    plt.plot(force_1, time, "r:", label="Capteur 1")
-    plt.plot(force_2, time, "r:", label="Capteur 2")
-    plt.plot(force_3, time, "r:", label="Capteur 3")
-    plt.plot(force_4, time, "r:", label="Capteur 4")
-    plt.plot(mean_force, time, "b-", label="Force Moyenne")
+    plt.plot(time, force_1, ":", label="Capteur 1")
+    plt.plot(time, force_2, ":", label="Capteur 2")
+    plt.plot(time, force_3, ":", label="Capteur 3")
+    plt.plot(time, force_4, ":", label="Capteur 4")
+    plt.plot(time, mean_force, "b-", label="Force Moyenne")
 
     plt.xlabel('Temps (ms)')
     plt.ylabel('Force (Kg)')
-    plt.title('Title')
+    plt.title(title)
 
     plt.legend()
     plt.grid(True)
+    plt.show()
 
     plt.savefig(F"{file_name}.png")
+
+#file_name = "2021_6_8_10_14_38.csv"
+#graph_data(file_name)
 
