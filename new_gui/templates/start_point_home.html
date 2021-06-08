@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block MainContent %}
+	<!-- Begin Page Content -->
+<div class="container-fluid">
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Create New session</h1>
+		<form method="POST" action="{% url "start_block:results" %}">
+			{% csrf_token %}
+			{{form}}
+			<br><br>
+			<input name="data" type="text" value="{{file_name}}" hidden>
+			<br><br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</div>
+</div>
+<!-- End of Main Content -->
+<!-- End of Content Wrapper -->
+{% endblock %}

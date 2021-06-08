@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 #local views
 from .views import serial_list, report_page, i2c_page
 
@@ -23,4 +25,11 @@ urlpatterns = [
     path('i2c/<int:number>', i2c_page),
     path('home/', serial_list, name='home'),
     path('graph/', report_page, name='report_page'),
-]
+    path('admin2', include(('apps.admin2.urls','admin2'), namespace='admin2')),
+    path(
+        'start_block',
+        include(
+            ('apps.start_block.urls','start_block'),
+            namespace='start_block')
+        ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

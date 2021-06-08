@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
         "10.20.1.1",
+        "192.168.1.72",
+        'linky4teens.sytes.net',
         ]
 
 
@@ -39,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #local apps
+    'apps.admin2',
+    'apps.relays',
+    'apps.start_block',
 ]
 
 MIDDLEWARE = [
@@ -107,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
