@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
-{% load static %}
 {% block MainContent %}
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -36,7 +35,7 @@
 					<tbody>
 							{% for session in sessions %}
 						<tr>
-								<th>{{session.created}}</th>
+							<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
 								<th>{{session.max_force_left}}</th>
 								<th>{{session.max_force_right}}</th>
 						</tr>
