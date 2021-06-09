@@ -8,7 +8,7 @@ from pathlib import Path
 #django modules
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, FormView
 
 #models
 from apps.start_block.models import Session
@@ -75,8 +75,10 @@ def results(request):
     port = 50
     host = "10.20.1.56"
     print(F"Connecting to {host} in port {port}")
-    s_point.connect((host, port))
+    s_point.settimeout(10)
     try:
+        s_point.connect((host, port))
+        s_point.settimeout(None)
         message = b"1"
         s_point.send(message)
 
@@ -93,10 +95,12 @@ def results(request):
                 print(F"{number} = {str(llega)}")
                 file.write(F"{llega.decode('ascii')}")
                 llega = b""
-
+    except OSError:
+        return redirect("home")
     except Exception as E:
         print("Error: ")
         print(E)
+        return redirect("home")
 
     file.close()
     s_point.close()
