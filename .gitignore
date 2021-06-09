@@ -14,3 +14,16 @@ circuits/
 new_gui/db.sqlite3
 arduino/temoin/temoin.ino
 new_gui/new_gui/__pycache__/
+
+# -- python binary --
+**/__pycache__/**
+**.pyc
+
+# -- django migrations files --
+**/migrations/**
+
+# -- media files --
+new_gui/media/**
+new_gui/static/data/**
+new_gui/static/img/**
+new_gui/pyclient.py

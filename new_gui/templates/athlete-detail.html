@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
+{% load static %}
 {% block MainContent %}
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -7,7 +8,7 @@
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">{{object.nom}} {{object.prenom}}</h1>
 	<div>
-			<img class="rounded-circle" src="{{object.photo}}">
+		<img class="rounded-circle" src="/{{object.photo}}">
 	</div>
 
 	<!-- DataTales Example -->
