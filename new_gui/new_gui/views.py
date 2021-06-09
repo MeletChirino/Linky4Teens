@@ -1,17 +1,80 @@
 """Views file for django"""
+# python modules
+import time
 import os
 from pathlib import Path
+import socket
+
+# django modules
 from django.shortcuts import render, redirect
-#serial functions
+
+# serial functions
 from .serial_ports import serial_ports
-from .temoin import Temoin
-#matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+
 #i2c and electronic modules
 from smbus import SMBus
 
-def i2c_page(requesti, number):
+def home(request):
+    template_name = 'home.html'
+    s_point = socket.socket()
+    s_point.settimeout(10)
+    port = 50
+    host = "10.20.1.56"
+    start_time = time.time()
+    print(F"Connecting to {host} in port {port}")
+    info = {
+            'start_block': 'Disconnected',
+            'title': 'Bienvenu',
+            }
+    try:
+        s_point.connect((host, port))
+    except Exception as E:
+        print("Error: Timeout!")
+        print(E)
+        return render(
+                request,
+                template_name,
+                context=info
+                )
+    s_point.settimeout(None)
+    print(F"Connected!")
+    try:
+        message = b"2"
+        s_point.send(message)
+
+        data = b""
+        number = 0
+        llega = b""
+        print(F'Receiving data ')
+        while (not data == b"!"):
+            data = s_point.recv(1)
+            #print(data)
+            llega += data
+            if (data == b"\n"):
+                number += 1
+                print(F"{number} = {str(llega)}")
+                msg = llega.decode('ascii')
+                print(F"{number} = {str(msg)}")
+                #file.write(F"{llega.decode('ascii')}")
+                llega = b""
+                info['start_block'] = "Connected!"
+                print(F'Message {msg}')
+
+    except Exception as E:
+        print("Error: ")
+        print(E)
+
+    s_point.close()
+
+    return render(
+            request,
+            template_name,
+            context=info
+            )
+
+
+
+def i2c_page(request, number):
     bus = SMBus(1) # indicates /dev/i2c-1
     if number == 1:
         bus.write_byte(0x8, 0x1)

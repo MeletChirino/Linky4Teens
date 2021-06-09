@@ -18,12 +18,14 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 #local views
-from .views import serial_list, report_page, i2c_page
+from .views import (serial_list, report_page, i2c_page,
+        home
+        )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('i2c/<int:number>', i2c_page),
-    path('home/', serial_list, name='home'),
+    path('home/', home, name='home'),
     path('graph/', report_page, name='report_page'),
     path('admin2', include(('apps.admin2.urls','admin2'), namespace='admin2')),
     path(
@@ -32,4 +34,4 @@ urlpatterns = [
             ('apps.start_block.urls','start_block'),
             namespace='start_block')
         ),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
