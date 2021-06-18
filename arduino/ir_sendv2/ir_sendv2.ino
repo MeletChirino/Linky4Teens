@@ -2,53 +2,86 @@
    @file ir_sendv2.ino
 
    @section description Description
-	Cette appareil envoie des pulses vers le temoin dans la course pour savoir 
-	la zone ou il se trouve. L'appareil a une conmutateur pour selectioner le
-	comportement qu'il aura. Il a ete concu modulairement pour et donc nous pouvons 
-	changer les LED juste en modifiant la saortie
+   An example sketch demonstrating how to use Doxygen style comments for
+   generating source code documentation with Doxygen.
 
    @section circuit Circuit
-	- Il y a une circuit qui fait une onde carre de 38KHz et le microcontroleur le pilote
-	avec un transisteur. L'onde carre fait rouler la LED IR pour envoye une signal reconnue
-	par le recepteur IR dans le temoin.
-	-Le module du led Peut etre change pour une autre LED qui soit plus ou moins puissante.
-	-Le micrcontroleur marche avec un regulateur de 5V alors que le reste du circuit marche 
-	avec la tension de la batterie.
+   - Red LED connected to pin D2.
+   - Momentary push button connected to pin D3.
+
+   @section libraries Libraries
+   - Arduino_LSM6DS3 (https://github.com/arduino-libraries/Arduino_LSM6DS3)
+     - Interacts with on-board IMU.
+
+   @section notes Notes
+   - Comments are Doxygen compatible.
+
+   @section todo TODO
+   - Don't use Doxygen style formatting inside the body of a function.
 
    @section author Author
    - Created by Melet Chirino on 12/05/2021.
 */
-const int ledPin = 7;/*!< Pin attaché à la LED IR */
+const int ledPin = 12;/*!< Pin attaché à la LED IR */
 
-const int race = 18;/*!< Pin attaché à la signal de l'interrupteur pour savoir si la barriere IR agit sur le course ou la zone de transmission */
-const int start = 13;/*!< Pin attaché à la signal de l'interrupteur pour savoir si la barriere IR sur le debut ou la fin d'une zone */
+const int race = 10;/*!< Pin attaché à la signal de l'interrupteur pour savoir si la barriere IR agit sur le course ou la zone de transmission */
+const int start = 11;/*!< Pin attaché à la signal de l'interrupteur pour savoir si la barriere IR sur le debut ou la fin d'une zone */
 
+const int battery_pins[8] = {9, 8, 7, 6, 5, 4, 3, 2};
 /// \brief Fonction par defaut d'arduino pour initialiser les pins
 void setup() {
+
+  Serial.begin(115200);
 
   pinMode(ledPin, OUTPUT);
   pinMode(race, INPUT);
   pinMode(start, INPUT);
+
+  for (int i = 0; i < 8; i++) {
+    pinMode(battery_pins[i], OUTPUT);
+    digitalWrite(battery_pins[i], LOW);
+  }
+  delay(3000);
+
+  for (int i = 0; i < 8; i++) {
+
+    digitalWrite(battery_pins[i], HIGH);
+    delay(100);
+  }
+  delay(1000);
+  for (int i = 8; i >= 0; i -= 1) {
+
+    digitalWrite(battery_pins[i], LOW);
+    delay(100);
+  }
+  delay(1000);
+
+  digitalWrite(9, LOW);
 
   digitalWrite(ledPin, 0);
 }
 
 /// \brief Fonction par defaut d'arduino qui s'execute en loop
 void loop() {
+  int battery_charge;
+  battery_charge = analogRead(0);
+  battery_charge = map(battery_charge, 0, 1023, 0, 100);
+  battery_show(battery_charge);
+  Serial.println(analogRead(0));
 
-    if (digitalRead(race)) {
+  if (digitalRead(race)) {
     if (digitalRead(start)) {
       blink_(47);
     } else {
       blink_(72);
     }
-    } else {
+  } else {
     if (digitalRead(start)) {
       blink_(118);
     } else {
       blink_(32);
     }
-    }
+  }
 }
 
 /// \brief Fonction qui clignote une LED
