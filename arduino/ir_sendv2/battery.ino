@@ -8,7 +8,7 @@ void battery_show(int charge) {
   for (int i = charge_; i >= 0; i -= 1) {
     digitalWrite(battery_pins[i], LOW);
   }
-    for (int i = charge_; i < 8; i ++) {
+    for (int i = charge_ + 1; i < 8; i ++) {
     digitalWrite(battery_pins[i], HIGH);
   }
 }

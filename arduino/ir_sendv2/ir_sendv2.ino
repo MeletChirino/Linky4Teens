@@ -65,7 +65,7 @@ void setup() {
 void loop() {
   int battery_charge;
   battery_charge = analogRead(0);
-  battery_charge = map(battery_charge, 0, 1023, 0, 100);
+  battery_charge = map(battery_charge, 800, 1023, 0, 100);
   battery_show(battery_charge);
   Serial.println(analogRead(0));
 
