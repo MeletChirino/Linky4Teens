@@ -88,6 +88,7 @@ void loop() {
       }
       if (c == '1') {
         start_millis = millis();
+        send_header(client);
         while (millis() - start_millis < 5000) {
           static boolean newDataReady = 0;
           const int serialPrintInterval = 0; //increase value to slow down serial print activity
@@ -101,13 +102,12 @@ void loop() {
             if (millis() > t + serialPrintInterval) {
               float a = LoadCell_1.getData();
               float b = LoadCell_2.getData();
-              send_data(client, a, b);
-              Serial.print("Load_cell 1 output val: ");
-              Serial.print(a);
-              Serial.print("    Load_cell 2 output val: ");
-              Serial.println(b);
+              send_data(client, a, b, start_millis); 
+              //Serial.print("Load_cell 1 output val: ");
+              //Serial.print(a);
+              //Serial.print("    Load_cell 2 output val: ");
+              //Serial.println(b);
               newDataReady = 0;
-              t = millis();
             }
           }
           // receive command from serial terminal, send 't' to initiate tare operation:
