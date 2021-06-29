@@ -92,7 +92,7 @@ def results(request):
             llega += data
             if (data == b"\n"):
                 number += 1
-                print(F"{number} = {str(llega)}")
+                #print(F"{number} = {str(llega)}")
                 file.write(F"{llega.decode('ascii')}")
                 llega = b""
     except OSError:
@@ -112,7 +112,7 @@ def results(request):
     #context data
     data = {
             "graph_gauche": F"data/{file_name}_left.png",
-            "graph_droit": F"data/{file_name}_right.png",
+            #"graph_droit": F"data/{file_name}_right.png",
             "max_force_gauche": max_force_gauche,
             'max_force_droit': max_force_droit,
             }

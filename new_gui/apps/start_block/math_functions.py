@@ -37,6 +37,7 @@ def raw2list(column_name, dict_):
     return final
 
 def graph_data(file_name):
+
     global BASE_DIR
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
     file_path = os.path.join(
@@ -47,19 +48,14 @@ def graph_data(file_name):
     raw_data, keys_list = read_csv_data(file_path)
     time = raw2list('time', raw_data)
     #left feet data
-    left_forces = ['l_force_1', 'l_force_2', 'l_force_3', 'l_force_4']
+    left_forces = ['l_force','r_force']
     forces = []
     for key in left_forces:
         force = raw2list(key, raw_data)
         forces.append(force)
-    max_force_gauche = plot_feet_data(F"{file_name}_left", forces, time, 'Pied Gauche')
-    #right feet data
-    left_forces = ['r_force_1', 'r_force_2', 'r_force_3', 'r_force_4']
-    forces = []
-    for key in left_forces:
-        force = raw2list(key, raw_data)
-        forces.append(force)
-    max_force_droit = plot_feet_data(F"{file_name}_right", forces, time, 'Pied Droit')
+    plot_feet_data(F"{file_name}_left", forces, time, 'Forces Vs Time')
+    max_force_gauche = max(forces[0])
+    max_force_droit = max(forces[1])
 
     return max_force_gauche, max_force_droit
 
@@ -72,14 +68,12 @@ def plot_feet_data(file_name, forces, time, title):
 
     force_1 = np.array(forces[0])
     force_2 = np.array(forces[1])
-    force_3 = np.array(forces[2])
-    force_4 = np.array(forces[3])
 
     i = 0
     mean_force = []
     for value in force_1:
-        mean_value = force_1[i] + force_2[i] + force_3[i] + force_4[i]
-        mean_value /= 4
+        mean_value = force_1[i] + force_2[i]
+        mean_value /= 2
         mean_force.append(mean_value)
         i += 1
 
@@ -87,8 +81,6 @@ def plot_feet_data(file_name, forces, time, title):
 
     plt.plot(time, force_1, ":", label="Capteur 1")
     plt.plot(time, force_2, ":", label="Capteur 2")
-    plt.plot(time, force_3, ":", label="Capteur 3")
-    plt.plot(time, force_4, ":", label="Capteur 4")
     plt.plot(time, mean_force, "b-", label="Force Moyenne")
 
     plt.xlabel('Temps (ms)')
@@ -102,9 +94,3 @@ def plot_feet_data(file_name, forces, time, title):
     print(F"Saving picture to {file_path}")
     plt.savefig(file_path)
     plt.close()
-
-    return max(mean_force)
-
-#file_name = "2021_6_8_10_14_38.csv"
-#graph_data(file_name)
-

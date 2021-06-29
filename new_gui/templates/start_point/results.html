@@ -17,34 +17,17 @@
 									<!-- Card Header - Accordion -->
 									<a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
 											role="button" aria-expanded="true" aria-controls="collapseCardExample">
-											<h6 class="m-0 font-weight-bold text-primary">Graph Pied Gauche</h6>
+											<h6 class="m-0 font-weight-bold text-primary">Graph</h6>
 									</a>
 									<!-- Card Content - Collapse -->
 									<div class="collapse show" id="collapseCardExample">
 											<div class="card-body">
 												<img src="{% static graph_gauche %}">
-												Max force = {{max_force_gauche}}
+												Max force gauche = {{max_force_gauche}}<br>
+												Max force droit = {{max_force_droit}}
 											</div>
 									</div>
 							</div>
-
-
-
-						<!-- Collapsable Card Droit-->
-						<div class="card shadow mb-4">
-								<!-- Card Header - Accordion -->
-								<a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
-										role="button" aria-expanded="true" aria-controls="collapseCardExample">
-										<h6 class="m-0 font-weight-bold text-primary">Graph Pied Droit</h6>
-								</a>
-								<!-- Card Content - Collapse -->
-								<div class="collapse show" id="collapseCardExample">
-										<div class="card-body">
-											<img src="{% static graph_droit %}">
-											Max force droit = {{max_force_droit}}
-										</div>
-								</div>
-						</div>
 
 				</div>
 
