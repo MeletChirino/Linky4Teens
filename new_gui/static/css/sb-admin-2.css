@@ -10369,7 +10369,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item.active {
-  color: #4e73df;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -10448,7 +10448,7 @@ a:focus {
   align-items: center;
   font-size: 0.875rem;
   border-radius: 0.35rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 255, 255, 0.8);
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 1rem;

@@ -7,7 +7,7 @@ class Athletes(models.Model):
     date_naissance = models.DateField()
     photo = models.ImageField(
             upload_to = 'static/img/',
-            verbose_name="Photo de Profil",
+            verbose_name="Photo de Profil (pas necessaire)",
             blank=True,
             )
     created = models.DateTimeField(auto_now_add=True)

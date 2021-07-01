@@ -6,6 +6,7 @@ from django.conf import settings
 #local views
 from apps.admin2.views import (ListAthletesView,
         DetailAthleteView, CreateAthleteView,
+        UpdateAthleteView,
         )
 
 urlpatterns = [
@@ -17,11 +18,16 @@ urlpatterns = [
         path(
             route = '-AthleteDetail/<numero_id>',
             view = DetailAthleteView.as_view(),
-            name = "AthleteDetail",
+            name = "DetailAthlete"
             ),
         path(
             route = '-CreateAthlete/',
             view = CreateAthleteView.as_view(),
             name = "CreateAthlete",
+            ),
+        path(
+            route = '-UpdateAthlete/<numero_id>',
+            view = UpdateAthleteView.as_view(),
+            name = "UpdateAthlete",
             ),
         ]

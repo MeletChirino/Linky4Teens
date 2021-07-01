@@ -130,7 +130,6 @@ void loop() {
         }
 
       } else if (c == '2') {
-        //  Serial.println("ok");
         client.println("ok");
       }
       client.print("!");

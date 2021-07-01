@@ -1,7 +1,10 @@
 '''Math and plotting functions used in views file'''
+#python modules
 import csv
 import numpy as np
 from matplotlib import pyplot as plt
+import os
+from pathlib import Path
 
 def read_csv_data(file_name):
     file_handle = open(file_name, 'r', encoding='utf-8')
@@ -10,7 +13,14 @@ def read_csv_data(file_name):
     for row in csv_reader:
         keys = row.keys()
         for key in keys:
-            final_dict.append({key: float(row[key])})
+            try:
+                final_dict.append({key: float(row[key])})
+            except ValueError:
+                pass
+            except Exception as E:
+                print("Error")
+                print(E)
+                print(row[key])
 
     keys = list(keys)
     file_handle.close()
@@ -19,63 +29,68 @@ def read_csv_data(file_name):
 def raw2list(column_name, dict_):
     final = []
     for row in dict_:
-        #import pdb; pdb.set_trace()
         try:
             final.append(row[column_name])
         except KeyError:
             pass
 
-    #print(final)
     return final
 
 def graph_data(file_name):
-    raw_data, keys_list = read_csv_data(file_name)
+
+    global BASE_DIR
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    file_path = os.path.join(
+            BASE_DIR,
+            F"static/data/{file_name}.csv"
+            )
+    print(file_path)
+    raw_data, keys_list = read_csv_data(file_path)
     time = raw2list('time', raw_data)
     #left feet data
-    left_forces = ['l_force_1', 'l_force_2', 'l_force_3', 'l_force_4']
+    left_forces = ['l_force','r_force']
     forces = []
     for key in left_forces:
         force = raw2list(key, raw_data)
         forces.append(force)
-    import pdb; pdb.set_trace()
-    plot_feet_data(file_name, forces, time)
-    #right feet data
-    left_forces = ['r_force_1', 'r_force_2', 'r_force_3', 'r_force_4']
-    forces = []
-    for key in left_forces:
-        force = raw2list(key, raw_data)
-        forces.append(force)
-    #plot_feet_data(file_name, forces, time)
+    plot_feet_data(F"{file_name}_left", forces, time, 'Forces Vs Time')
+    max_force_gauche = max(forces[0])
+    max_force_droit = max(forces[1])
 
+    return max_force_gauche, max_force_droit
 
-def plot_feet_data(file_name, forces, time):
+def plot_feet_data(file_name, forces, time, title):
+    global BASE_DIR
+    file_path = os.path.join(
+            BASE_DIR,
+            F"static/data/{file_name}.png"
+            )
 
-    force_4 = np.array(forces[0])
-    force_1 = np.array(forces[1])
-    force_2 = np.array(forces[2])
-    force_3 = np.array(forces[3])
+    force_1 = np.array(forces[0])
+    force_2 = np.array(forces[1])
 
     i = 0
     mean_force = []
     for value in force_1:
-        mean_value = force_1[i] + force_2[i] + force_3[i] + force_4[i]
-        mean_value /= 4
+        mean_value = force_1[i] + force_2[i]
+        mean_value /= 2
         mean_force.append(mean_value)
         i += 1
+
     mean_force = np.array(mean_force)
 
-    plt.plot(force_1, time, "r:", label="Capteur 1")
-    plt.plot(force_2, time, "r:", label="Capteur 2")
-    plt.plot(force_3, time, "r:", label="Capteur 3")
-    plt.plot(force_4, time, "r:", label="Capteur 4")
-    plt.plot(mean_force, time, "b-", label="Force Moyenne")
+    plt.plot(time, force_1, ":", label="Capteur 1")
+    plt.plot(time, force_2, ":", label="Capteur 2")
+    plt.plot(time, mean_force, "b-", label="Force Moyenne")
 
     plt.xlabel('Temps (ms)')
     plt.ylabel('Force (Kg)')
-    plt.title('Title')
+    plt.title(title)
 
     plt.legend()
     plt.grid(True)
+    plt.show()
 
-    plt.savefig(F"{file_name}.png")
-
+    print(F"Saving picture to {file_path}")
+    plt.savefig(file_path)
+    plt.close()

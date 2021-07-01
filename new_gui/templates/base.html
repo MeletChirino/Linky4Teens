@@ -34,7 +34,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href={% url "home" %}>
                 <div class="sidebar-brand-icon ">
-			<img src="https://scontent.fcdg1-1.fna.fbcdn.net/v/t1.6435-9/42589128_1994905820799397_9073295567316058112_n.png?_nc_cat=110&ccb=1-3&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=-_BUhFdj9MoAX-2cWhW&_nc_ht=scontent.fcdg1-1.fna&oh=250b6d73c9c66c6249a603e170d4cce7&oe=60E29A46"
+									<img src="{% static "img/balma_logo.png"  %}"
 			     width=50 height=50>
                 </div>
                 <div class="sidebar-brand-text mx-3">Linky4Teens - CA Balma</div>
@@ -70,7 +70,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
 			<a class="collapse-item" href="{% url "admin2:AthleteList" %}">List</a>
-                        <a class="collapse-item" href="cards.html">Modifier</a>
 			<a class="collapse-item" href="{% url "admin2:CreateAthlete" %}">Nouveau</a>
                     </div>
                 </div>

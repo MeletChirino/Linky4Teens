@@ -1,15 +1,36 @@
 #python
+import os
 import socket
 import time
 import csv
+from pathlib import Path
 
 #django modules
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView, FormView
 
 #models
 from apps.start_block.models import Session
 from apps.admin2.models import Athletes
+from .math_functions import graph_data
+
+class DetailSessionView(DetailView):
+    template_name = 'start_point/results.html'
+    model = Session
+    pk_url_kwarg = 'session_id'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        session_id = context['object'].id
+        session_data = Session.objects.get(pk = session_id)
+        file_name = session_data.data
+        context["graph_gauche"] = F"data/{file_name}_left.png"
+        context["graph_droit"] = F"data/{file_name}_right.png"
+        context["max_force_gauche"] = session_data.max_force_left
+        context['max_force_droit'] = session_data.max_force_right
+        return context
 
 class CreateSessionView(CreateView):
     model = Session
@@ -30,7 +51,7 @@ def generate_file_name():
     hour =  time.localtime()[3]
     mins =  time.localtime()[4]
     sec =  time.localtime()[5]
-    name = F"static/data/{year}_{month}_{day}_{hour}_{mins}_{sec}.csv"
+    name = F"{year}_{month}_{day}_{hour}_{mins}_{sec}"
     return name
 
 def results(request):
@@ -38,52 +59,77 @@ def results(request):
     if request.method == "GET":
         return redirect("start_point:home")
     '''
-    #athlete = request.POST['athlete']
-    #file_name = request.POST['data']
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
     template_name = 'start_point/results.html'
 
-    athlete = '1'
-    file_name = "static/data/2021_6_8_10_14_38.csv"
-    raw_data, keys_list = read_csv_data(file_name)
-    print(keys_list)
-    l_force_1 = get_dict_row('l_force_1', raw_data)
-    print(l_force_1)
+    file_name = request.POST["data"]
+
+    file_path = os.path.join(
+            BASE_DIR,
+            F"static/data/{file_name}.csv"
+            )
+    print(file_path)
+    file = open(file_path, "a")
+
+    s_point = socket.socket()
+    port = 50
+    host = "10.20.1.56"
+    print(F"Connecting to {host} in port {port}")
+    s_point.settimeout(10)
+    try:
+        s_point.connect((host, port))
+        s_point.settimeout(None)
+        message = b"1"
+        s_point.send(message)
+
+        data = b""
+        number = 0
+        llega = b""
+        print(F'Receiving data in {file_name}')
+        while (not data == b"!"):
+            data = s_point.recv(1)
+            #print(data)
+            llega += data
+            if (data == b"\n"):
+                number += 1
+                #print(F"{number} = {str(llega)}")
+                file.write(F"{llega.decode('ascii')}")
+                llega = b""
+    except OSError:
+        return redirect("home")
+    except Exception as E:
+        print("Error: ")
+        print(E)
+        return redirect("home")
+
+    file.close()
+    s_point.close()
+
+    max_force_gauche, max_force_droit = graph_data(file_name)
+    print(F"data/{file_name}_left.png")
+
+
+    #context data
     data = {
-            "holi": "holi",
+            "graph_gauche": F"data/{file_name}_left.png",
+            #"graph_droit": F"data/{file_name}_right.png",
+            "max_force_gauche": max_force_gauche,
+            'max_force_droit': max_force_droit,
             }
+
+    #saving model
+    new_data = Session()
+    new_data.athlete = Athletes.objects.get(id=request.POST['athlete'])
+    new_data.data = request.POST['data']
+    new_data.max_force_left = max_force_gauche
+    new_data.max_force_right = max_force_droit
+    new_data.save()
 
     return render(
             request,
             template_name,
             context = data
             )
-
-def read_csv_data(file_name):
-    file_handle = open(file_name, 'r', encoding='utf-8')
-    csv_reader = csv.DictReader(file_handle)
-    final_dict = list()
-    for row in csv_reader:
-        keys = row.keys()
-        for key in keys:
-            final_dict.append({key: float(row[key])})
-
-    keys = list(keys)
-    file_handle.close()
-    return final_dict, keys
-
-def get_dict_row(column_name, dict_):
-    final = []
-    for row in dict_:
-        #import pdb; pdb.set_trace()
-        try:
-            final.append(row[column_name])
-        except KeyError:
-            pass
-
-    #print(final)
-    return final
-
-
 
 def get_data(request):
     name = request.POST["data"]

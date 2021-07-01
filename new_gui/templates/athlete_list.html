@@ -38,8 +38,12 @@
 							{% for athlete in object_list %}
 						<tr>
 								<td>
-								<a href="{% url "admin2:AthleteDetail" athlete.numero_id %}">
+								<a href="{% url "admin2:DetailAthlete" athlete.numero_id %}">
 										{{athlete.numero_id}}
+								</a>
+								<br>
+								<a href="{% url "admin2:UpdateAthlete" athlete.numero_id %}">
+										Modifier
 								</a>
 								</td>
 								<td>{{athlete.nom}}</td>
