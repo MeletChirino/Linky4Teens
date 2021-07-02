@@ -9,23 +9,28 @@ import socket
 from django.shortcuts import render, redirect
 
 # serial functions
-from .serial_ports import serial_ports
+from apps.relays.serial_module_ import serial_ports
 
 #i2c and electronic modules
 from smbus import SMBus
 
 def home(request):
     template_name = 'home.html'
+    info = {
+            'start_block': 'Disconnected',
+            'title': 'Bienvenu',
+            }
+
+    #serial ports
+    serial_ports_ = serial_ports()
+    info['serial_ports'] = serial_ports_
+
     s_point = socket.socket()
     s_point.settimeout(10)
     port = 50
     host = "10.20.1.56"
     start_time = time.time()
     print(F"Connecting to {host} in port {port}")
-    info = {
-            'start_block': 'Disconnected',
-            'title': 'Bienvenu',
-            }
     try:
         s_point.connect((host, port))
     except Exception as E:

@@ -18,6 +18,14 @@
 											>
 											<br>
 											Start block {{ start_block }}
+											<br>
+											{% if serial_ports %}
+											Temoins connectes <br>
+											{% for port in serial_ports %}
+											{{ port }}
+											<br>
+											{% endfor %}
+											{% endif %}
 										</div>
 								</div>
 						</div>
