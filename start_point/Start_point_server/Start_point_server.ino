@@ -32,8 +32,8 @@ void setup() {
   float calibrationValue_1; // calibration value load cell 1
   float calibrationValue_2; // calibration value load cell 2
 
-  calibrationValue_1 = 10.7; // uncomment this if you want to set this value in the sketch
-  calibrationValue_2 = 4.5; // uncomment this if you want to set this value in the sketch
+  calibrationValue_1 = 10.17; // uncomment this if you want to set this value in the sketch
+  calibrationValue_2 = 2.52; // uncomment this if you want to set this value in the sketch
 
   LoadCell_1.begin();
   LoadCell_2.begin();
@@ -102,7 +102,7 @@ void loop() {
             if (millis() > t + serialPrintInterval) {
               float a = LoadCell_1.getData();
               float b = LoadCell_2.getData();
-              send_data(client, a, b, start_millis); 
+              send_data(client, a, b, start_millis);
               //Serial.print("Load_cell 1 output val: ");
               //Serial.print(a);
               //Serial.print("    Load_cell 2 output val: ");
