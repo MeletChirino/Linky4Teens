@@ -1,5 +1,4 @@
 #include <WiFi.h>
-#include <EEPROM.h>
 #include "HX711_ADC.h"
 
 //HX711 pins
@@ -12,14 +11,13 @@ const int HX711_sck_2 = 2;//mcu > HX711 no 2 sck pin
 HX711_ADC LoadCell_1(HX711_dout_1, HX711_sck_1);
 HX711_ADC LoadCell_2(HX711_dout_2, HX711_sck_2);
 
-//eeprom address for calibration of each cell
-const int calVal_eepromAdress_1 = 0; //  1 (4 bytes)
-const int calVal_eepromAdress_2 = 4; // 2 (4 bytes)
-unsigned long t = 0;
 
 //Server config
 const char* ssid     = "Linky4Teens Dock!";
 const char* password = "linkypass!";
+
+//battery charge pin
+const int battery_pin = 34;
 
 WiFiServer wifiServer(50);
 
@@ -76,7 +74,9 @@ char c;
 void loop() {
 
   long start_millis;
+  int battery_charge, volts;
   WiFiClient client = wifiServer.available();
+
 
   if (client) {
 
@@ -84,7 +84,7 @@ void loop() {
 
       while (client.available() > 0) {
         c = client.read();
-        Serial.write(c);
+        Serial.println(c);
       }
       if (c == '1') {
         start_millis = millis();
@@ -99,7 +99,7 @@ void loop() {
 
           //get smoothed value from data set
           if ((newDataReady)) {
-            if (millis() > t + serialPrintInterval) {
+            if (millis() > serialPrintInterval) {
               float a = LoadCell_1.getData();
               float b = LoadCell_2.getData();
               send_data(client, a, b, start_millis);
@@ -130,7 +130,8 @@ void loop() {
         }
 
       } else if (c == '2') {
-        client.println("ok");
+        //client.println("ok");
+        send_battery_charge(client);
       }
       client.print("!");
 

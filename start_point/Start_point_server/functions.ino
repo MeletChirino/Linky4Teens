@@ -7,7 +7,7 @@ void send_data(WiFiClient client, float val_1, float val_2, float time_) {
   //time
   client.print(",");
   client.println(millis() - time_);
-    //Left Force
+  //Left Force
   Serial.print(val_1);//left force 1
   //Right Force
   Serial.print(",");
@@ -25,4 +25,14 @@ void send_header(WiFiClient client) {
   //time
   client.print(",");
   client.println("time");
+}
+void send_battery_charge(WiFiClient client) {
+  //this function reads battery charge in pin 35 and maps it
+  //to a percentage value
+  int volts;
+  //volts = analogRead(battery_pin);
+  //volts = map(volts, 3598, 4095, 0, 100);
+  volts = 62;
+  Serial.println(volts);
+  client.println(volts);
 }
