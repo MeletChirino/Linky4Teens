@@ -17,7 +17,12 @@
 											width=120
 											>
 											<br>
-											Start block {{ start_block }}
+											Starting Block {{ start_block }}
+											{% if start_block == "Connected!" %}
+											<br>
+											<i class="{{battery_icon}}"></i>
+											{{ charge }}%
+											{% endif %}
 											<br>
 											{% if serial_ports %}
 											Temoins connectes <br>
