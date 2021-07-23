@@ -7,7 +7,8 @@ from django.conf import settings
 #local views
 from apps.start_block.views import (
         get_data, CreateSessionView, results,
-        DetailSessionView,
+        DetailSessionView, ListSessionView,
+        delete
         )
 from apps.admin2.views import (ListAthletesView,
         DetailAthleteView,
@@ -25,6 +26,11 @@ urlpatterns = [
             name = "get_data",
             ),
         path(
+            route = '-DeleteSession/<session_id>',
+            view = delete,
+            name = "DeleteSession",
+            ),
+        path(
             route = '-results/',
             view = results,
             name = "results",
@@ -34,6 +40,9 @@ urlpatterns = [
             view = DetailSessionView.as_view(),
             name = "DetailSession",
             ),
+        path(
+            route = '-session-list',
+            view = ListSessionView.as_view(),
+            name = "SessionList"
+            ),
         ]
-							#<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
-							#<th><a href="">{{session.created}} {{session.data}}</a></th>

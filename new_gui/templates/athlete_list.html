@@ -19,25 +19,38 @@
 					<thead>
 						<tr>
 						</tr>
+							<th>Pic</th>
 							<th>Numero ID</th>
 							<th>Nom</th>
 							<th>Prenom</th>
 							<th>Date de Naissance</th>
+							<th>Categorie</th>
 							<th>Membre depuis</th>
 					</thead>
 					<tfoot>
 						<tr>
+							<th>Pic</th>
 							<th>Numero ID</th>
 							<th>Nom</th>
 							<th>Prenom</th>
 							<th>Date de Naissance</th>
+							<th>Categorie</th>
 							<th>Membre depuis</th>
 						</tr>
 					</tfoot>
 					<tbody>
 							{% for athlete in object_list %}
 						<tr>
-								<td>
+							<td><!-- photo de pforfil -->
+								{% if athlete.photo %}
+								<div>
+									<img width="20"	class="rounded-circle" src="/media/{{athlete.photo}}">
+								</div>
+								{% endif %}
+								<a href="{% url "admin2:DeleteAthlete" athlete.id %}">
+									<i class="fas fa-trash"></i>
+								</a>
+								<td><!-- numero identification -->
 								<a href="{% url "admin2:DetailAthlete" athlete.numero_id %}">
 										{{athlete.numero_id}}
 								</a>
@@ -49,6 +62,7 @@
 								<td>{{athlete.nom}}</td>
 								<td>{{athlete.prenom}}</td>
 								<td>{{athlete.date_naissance}}</td>
+								<td>{{athlete.categorie}}</td>
 								<td>{{athlete.created}}</td>
 						</tr>
 							{% endfor %}
@@ -63,4 +77,13 @@
 
 </div>
 <!-- End of Main Content -->
+{% endblock %}
+{% block Scripts %}
+<!-- Page level plugins -->
+<script src="{% static "vendor/datatables/jquery.dataTables.min.js" %}"></script>
+<script src="{% static "vendor/datatables/dataTables.bootstrap4.min.js" %}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{% static "js/demo/datatables-demo.js" %}"></script>
+
 {% endblock %}

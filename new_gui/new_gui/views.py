@@ -64,6 +64,7 @@ def home(request):
                 info['start_block'] = "Connected!"
                 info['charge'] = msg
                 print(F'Message {msg}')
+        info['battery_icon'] = '?'
         if int(msg) > 80:
             info['battery_icon'] = "fas fa-battery-full"
         elif int(msg) <= 80 and int(msg) > 75:
@@ -75,7 +76,6 @@ def home(request):
             info['battery_icon'] = "fas fa-battery-quarter"
         elif int(msg) <= 25:
             info['battery_icon'] = 'fas fa-battery-empty'
-
 
     except Exception as E:
         print("Error: ")
