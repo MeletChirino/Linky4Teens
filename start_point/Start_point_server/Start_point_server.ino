@@ -17,7 +17,7 @@ const char* ssid     = "Linky4Teens Dock!";
 const char* password = "linkypass!";
 
 //battery charge pin
-const int battery_pin = 34;
+const int battery_pin = 35;
 
 WiFiServer wifiServer(50);
 
@@ -74,9 +74,8 @@ char c;
 void loop() {
 
   long start_millis;
-  int battery_charge, volts;
+  long temps_echantillon = 5 * 1000;// le temps d'echantillonage reglable
   WiFiClient client = wifiServer.available();
-
 
   if (client) {
 
@@ -89,7 +88,7 @@ void loop() {
       if (c == '1') {
         start_millis = millis();
         send_header(client);
-        while (millis() - start_millis < 5000) {
+        while (millis() - start_millis < temps_echantillon) {
           static boolean newDataReady = 0;
           const int serialPrintInterval = 0; //increase value to slow down serial print activity
 
@@ -99,7 +98,7 @@ void loop() {
 
           //get smoothed value from data set
           if ((newDataReady)) {
-            if (millis() > serialPrintInterval) {
+            if (millis() >  serialPrintInterval) {
               float a = LoadCell_1.getData();
               float b = LoadCell_2.getData();
               send_data(client, a, b, start_millis);
