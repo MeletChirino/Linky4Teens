@@ -99,16 +99,23 @@
                     <i class="fas fa-fw fa-running"></i>
                 Sport            </div>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Starting block -->
             <li class="nav-item">
 					<a class="nav-link" href="{% url "start_block:home" %}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Start Point</span></a>
             </li>
 
+            <!-- Nav Item - Sessions -->
+            <li class="nav-item">
+					<a class="nav-link" href="{% url "start_block:SessionList" %}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Sessions</span></a>
+            </li>
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+							<a class="nav-link" href="{% url "relays:home" %}">
                     <i class="fas fa-fw fa-drumstick-bite"></i>
                     <span>Temoin</span></a>
             </li>
@@ -408,6 +415,8 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+                {% block Scripts %}
+                {% endblock %}
 
 </body>
 
