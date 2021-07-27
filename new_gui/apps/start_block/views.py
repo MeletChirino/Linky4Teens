@@ -73,8 +73,12 @@ def results(request):
     coach_name = Coach.objects.get(
             id = coach_id
             ).nom
+    athlete_id = request.POST["athlete"]
+    athlete_name = Athlete.objects.get(
+            id = athlete_id
+            ).nom
     file_name = request.POST["data"]
-    file_name = F"{coach_name}_{file_name}"
+    file_name = F"{coach_name}__{athlete_name}_{file_name}"
     save_csv_data(file_name)
 
     print("graficando")
