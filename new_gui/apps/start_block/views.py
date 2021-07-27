@@ -68,6 +68,7 @@ def results(request):
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
     template_name = 'start_point/results.html'
 
+    #get info from web page
     coach_id = request.POST["coach"]
     coach_name = Coach.objects.get(
             id = coach_id
@@ -88,14 +89,13 @@ def results(request):
             }
 
     #saving model
-    new_data = Session()
-    new_data.data = file_name
-    new_data.athlete = Athletes.objects.get(id=request.POST['athlete'])
-    new_data.coach = Coach.objects.get(
-            id = request.POST['coach']
+    new_data = Session(
+            data = file_name,
+            athlete = Athletes.objects.get(id=request.POST['athlete']),
+            coach = Coach.objects.get(id=request.POST['coach']),
+            max_force_left = max_force_gauche,
+            max_force_right = max_force_droit,
             )
-    new_data.max_force_left = max_force_gauche
-    new_data.max_force_right = max_force_droit
     new_data.save()
 
     return render(

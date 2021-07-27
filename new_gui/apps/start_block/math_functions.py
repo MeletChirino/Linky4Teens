@@ -1,4 +1,6 @@
 '''Math and plotting functions used in views file'''
+#django modules
+from django.shortcuts import redirect
 #python modules
 import csv
 import numpy as np
