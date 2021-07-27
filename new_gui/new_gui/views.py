@@ -4,6 +4,8 @@ import time
 import os
 from pathlib import Path
 import socket
+from git import Repo
+from pathlib import Path
 
 # django modules
 from django.shortcuts import render, redirect
@@ -13,6 +15,17 @@ from apps.relays.serial_module_ import serial_ports
 
 #i2c and electronic modules
 from smbus import SMBus
+
+
+def update_view(request):
+    print("updating GUI")
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    print(BASE_DIR)
+    repo = Repo(BASE_DIR)
+    origin = repo.remotes.origin
+    origin.pull("master")
+    return redirect("home")
+
 
 def home(request):
     template_name = 'home.html'
