@@ -19,6 +19,9 @@ const char* password = "linkypass!";
 //battery charge pin
 const int battery_pin = 35;
 
+//On board LED GPIO 2
+const int led_pin = 2;
+bool led_status = false;
 WiFiServer wifiServer(50);
 
 void setup() {
@@ -30,8 +33,8 @@ void setup() {
   float calibrationValue_1; // calibration value load cell 1
   float calibrationValue_2; // calibration value load cell 2
 
-  calibrationValue_1 = 10.17; // uncomment this if you want to set this value in the sketch
-  calibrationValue_2 = 2.52; // uncomment this if you want to set this value in the sketch
+  calibrationValue_1 = 2.52; // uncomment this if you want to set this value in the sketch
+  calibrationValue_2 = 10.17; // uncomment this if you want to set this value in the sketch
 
   LoadCell_1.begin();
   LoadCell_2.begin();
@@ -48,9 +51,13 @@ void setup() {
   }
   if (LoadCell_1.getTareTimeoutFlag()) {
     Serial.println("Timeout, check MCU>HX711 no.1 wiring and pin designations");
+    led_control("blink");
+    delay(200);
   }
   if (LoadCell_2.getTareTimeoutFlag()) {
     Serial.println("Timeout, check MCU>HX711 no.2 wiring and pin designations");
+    led_control("blink");
+    delay(200);
   }
   LoadCell_1.setCalFactor(calibrationValue_1); // user set calibration value (float)
   LoadCell_2.setCalFactor(calibrationValue_2); // user set calibration value (float)
@@ -61,10 +68,12 @@ void setup() {
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
+    delay(500);
     Serial.println("Connecting to WiFi..");
+    //two nest lines makes led blink
+    led_control("blink");
   }
-
+  led_control("on");
   Serial.println("Connected to the WiFi network");
   Serial.println(WiFi.localIP());
 
@@ -75,7 +84,10 @@ void loop() {
 
   long start_millis;
   long temps_echantillon = 5 * 1000;// le temps d'echantillonage reglable
+  float a, b;
   WiFiClient client = wifiServer.available();
+
+  led_control("on");
 
   if (client) {
 
@@ -83,12 +95,14 @@ void loop() {
 
       while (client.available() > 0) {
         c = client.read();
-        Serial.println(c);
       }
+
       if (c == '1') {
         start_millis = millis();
         send_header(client);
+
         while (millis() - start_millis < temps_echantillon) {
+
           static boolean newDataReady = 0;
           const int serialPrintInterval = 0; //increase value to slow down serial print activity
 
@@ -96,19 +110,9 @@ void loop() {
           if (LoadCell_1.update()) newDataReady = true;
           LoadCell_2.update();
 
-          //get smoothed value from data set
-          if ((newDataReady)) {
-            if (millis() >  serialPrintInterval) {
-              float a = LoadCell_1.getData();
-              float b = LoadCell_2.getData();
-              send_data(client, a, b, start_millis);
-              //Serial.print("Load_cell 1 output val: ");
-              //Serial.print(a);
-              //Serial.print("    Load_cell 2 output val: ");
-              //Serial.println(b);
-              newDataReady = 0;
-            }
-          }
+           a = LoadCell_1.getData();
+           b = LoadCell_2.getData();
+
           // receive command from serial terminal, send 't' to initiate tare operation:
           if (Serial.available() > 0) {
             char inByte = Serial.read();
@@ -125,10 +129,12 @@ void loop() {
           if (LoadCell_2.getTareStatus() == true) {
             Serial.println("Tare load cell 2 complete");
           }
+          delay(25);
 
         }
 
       } else if (c == '2') {
+        led_control("blink");
         //client.println("ok");
         send_battery_charge(client);
       }

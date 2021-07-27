@@ -7,8 +7,6 @@ void send_data(WiFiClient client, float val_1, float val_2, float time_) {
   //time
   client.print(",");
   client.println(millis() - time_);
-  delay(16);
-  /*
   //Left Force
   Serial.print(val_1);//left force 1
   //Right Force
@@ -17,7 +15,6 @@ void send_data(WiFiClient client, float val_1, float val_2, float time_) {
   //time
   Serial.print(",");
   Serial.println(millis() - time_);
-  */
 }
 void send_header(WiFiClient client) {
   //Left Force
@@ -41,8 +38,19 @@ void send_battery_charge(WiFiClient client) {
   charge = adc_value * 0.130 - 450;
 
   client.println(charge);
-  Serial.print("Raw = ");
-  Serial.print(adc_value);
-  Serial.print("charge = ");
-  Serial.println(charge);
+  /*
+    Serial.print("Raw = ");
+    Serial.print(adc_value);
+    Serial.print("charge = ");
+    Serial.println(charge);
+  */
+}
+void led_control(String control) {
+  if (control == "blink") {
+    led_status = !led_status;
+    digitalWrite(led_pin, led_status);
+  } else if (control == "on") {
+    led_status = true;
+    digitalWrite(led_pin, led_status);
+  }
 }
