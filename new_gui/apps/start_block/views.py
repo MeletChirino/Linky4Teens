@@ -74,7 +74,7 @@ def results(request):
             id = coach_id
             ).nom
     athlete_id = request.POST["athlete"]
-    athlete_name = Athlete.objects.get(
+    athlete_name = Athletes.objects.get(
             id = athlete_id
             ).nom
     file_name = request.POST["data"]
@@ -87,7 +87,6 @@ def results(request):
     #context data
     data = {
             "graph_gauche": F"data/{file_name}_left.png",
-            #"graph_droit": F"data/{file_name}_right.png",
             "max_force_gauche": max_force_gauche,
             'max_force_droit': max_force_droit,
             }
