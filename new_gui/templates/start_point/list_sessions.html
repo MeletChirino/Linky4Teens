@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block MainContent %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Liste des athletes</h1>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Liste</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+						</tr>
+							<th>Pic</th>
+							<th>Athlete</th>
+							<th>Coach</th>
+							<th>Date</th>
+							<th>Fichier a exporter</th>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Pic</th>
+							<th>Athlete</th>
+							<th>Coach</th>
+							<th>Date</th>
+							<th>Fichier a exporter</th>
+						</tr>
+					</tfoot>
+					<tbody>
+							{% for session in object_list %}
+						<tr>
+							<td>
+								{% if session.athlete.photo %}
+								<div>
+									<img width="20"	class="rounded-circle" src="/media/{{session.athlete.photo}}">
+								</div>
+								{% endif %}
+								<a href="{% url "start_block:DeleteSession" session.id %}">
+									<i class="fas fa-trash"></i>
+								</a>
+							</td>
+							<td>{{session.athlete}}</td>
+							<td>{{session.coach}}</td>
+							<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
+							<td><a href="static/data/{{session.data}}.csv">fichier.csv</a></td>
+						</tr>
+							{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}
+			{% block Scripts %}
+    <!-- Page level plugins -->
+    <script src="{% static "vendor/datatables/jquery.dataTables.min.js" %}"></script>
+    <script src="{% static "vendor/datatables/dataTables.bootstrap4.min.js" %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static "js/demo/datatables-demo.js" %}"></script>
+
+	{% endblock %}

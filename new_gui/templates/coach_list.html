@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block MainContent %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Liste des athletes</h1>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Liste</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+						</tr>
+							<th>Pic</th>
+							<th>Numero ID</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Categorie Entraine</th>
+							<th>Date de Naissance</th>
+							<th>Membre depuis</th>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Pic</th>
+							<th>Numero ID</th>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Categorie Entraine</th>
+							<th>Date de Naissance</th>
+							<th>Membre depuis</th>
+						</tr>
+					</tfoot>
+					<tbody>
+							{% for coach in object_list %}
+						<tr>
+							<td>
+								{% if coach.photo %}
+								<div>
+									<img width="20"	class="rounded-circle" src="/media/{{coach.photo}}">
+								</div>
+								{% endif %}
+							</td>
+								<td>
+								<a href="{% url "admin2:DetailCoach" coach.numero_id %}">
+										{{coach.numero_id}}
+								</a>
+								<br>
+								<a href="{% url "admin2:UpdateCoach" coach.numero_id %}">
+										Modifier
+								</a>
+								</td>
+								<td>{{coach.nom}}</td>
+								<td>{{coach.prenom}}</td>
+								<td>{{coach.categorie}}</td>
+								<td>{{coach.date_naissance}}</td>
+								<td>{{coach.created}}</td>
+						</tr>
+							{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}
+{% block Scripts %}
+<!-- Page level plugins -->
+<script src="{% static "vendor/datatables/jquery.dataTables.min.js" %}"></script>
+<script src="{% static "vendor/datatables/dataTables.bootstrap4.min.js" %}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{% static "js/demo/datatables-demo.js" %}"></script>
+
+{% endblock %}
