@@ -17,11 +17,11 @@
 											width=120
 											>
 											<br>
-											Starting Block {{ start_block }}
-											{% if start_block == "Connected!" %}
+											{% if starting_block.connected %}
+											Starting Block : Connected
 											<br>
-											<i class="{{battery_icon}}"></i>
-											{{ charge }}%
+											<i class="{{starting_block.icon}}"></i>
+											{{ starting_block.charge}}%
 											{% endif %}
 											<br>
 											{% if serial_ports %}

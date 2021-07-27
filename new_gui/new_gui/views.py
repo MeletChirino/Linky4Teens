@@ -33,75 +33,101 @@ def home(request):
             'start_block': 'Disconnected',
             'title': 'Bienvenu',
             }
-
     #serial ports
     serial_ports_ = serial_ports()
     info['serial_ports'] = serial_ports_
 
-    s_point = socket.socket()
-    s_point.settimeout(10)
-    port = 50
-    host = "10.20.1.56"
-    start_time = time.time()
-    print(F"Connecting to {host} in port {port}")
-    try:
-        s_point.connect((host, port))
-    except Exception as E:
-        print("Error: Timeout!")
-        print(E)
-        return render(
-                request,
-                template_name,
-                context=info
-                )
-    s_point.settimeout(None)
-    print(F"Connected!")
-    try:
-        message = b"2"
-        s_point.send(message)
+    starting_block = StartingBlock(
+            host = "10.20.1.56",
+            port = 50,
+            )
+    starting_block.get_charge()
+    info['starting_block'] = starting_block
 
-        data = b""
-        number = 0
-        llega = b""
-        print(F'Receiving data ')
-        while (not data == b"!"):
-            data = s_point.recv(1)
-            print(F"data = {data}")
-            llega += data
-            if (data == b"\n"):
-                number += 1
-                print(F"{number} = {str(llega)}")
-                msg = llega.decode('ascii')
-                print(F"{number} = {str(msg)}")
-                llega = b""
-                info['start_block'] = "Connected!"
-                info['charge'] = msg
-                print(F'Message {msg}')
-        info['battery_icon'] = '?'
-        if int(msg) > 80:
-            info['battery_icon'] = "fas fa-battery-full"
-        elif int(msg) <= 80 and int(msg) > 75:
-            info['battery_icon'] = "fas fa-battery-three-quarters"
-        elif int(msg) <= 75 and int(msg) > 50:
-            info['battery_icon'] = "fas fa-battery-half"
-        elif int(msg) <= 50 and int(msg) > 25:
-            print("menor que 50 y mayor que 25")
-            info['battery_icon'] = "fas fa-battery-quarter"
-        elif int(msg) <= 25:
-            info['battery_icon'] = 'fas fa-battery-empty'
-
-    except Exception as E:
-        print("Error: ")
-        print(E)
-
-    print(F"message received = {info['battery_icon']}")
-    s_point.close()
 
     return render(
             request,
             template_name,
             context=info
             )
+
+class StartingBlock:
+    def __init__(self, host, port, **kwargs):
+        self.port = port
+        self.host = host
+        self.connected = False
+        self.charge = 0
+        self.icon = "fas fa-bug"
+        self.warning = ''
+
+    def get_charge(self):
+        s_point = socket.socket()
+        s_point.settimeout(2)
+        port = 50
+        print(F"Connecting to {self.host} in port {self.port}")
+        try:
+            s_point.connect(
+                    (self.host, self.port)
+                    )
+        except Exception as E:
+            return None
+
+        s_point.settimeout(None)
+        print(F"Connected!")
+        try:
+            message = b"2"
+            s_point.send(message)
+
+            data = b""
+            number = 0
+            llega = b""
+            print(F'Receiving data ')
+            while (not data == b"!"):
+                data = s_point.recv(1)
+                print(F"data = {data}")
+                llega += data
+                if (data == b"\n"):
+                    number += 1
+                    print(F"{number} = {str(llega)}")
+                    msg = llega.decode('ascii')
+                    print(F"{number} = {str(msg)}")
+                    llega = b""
+                    self.connected = True
+                    self.charge = msg
+                    print(F'Message {msg}')
+            if int(msg) > 80:
+                self.icon = "fas fa-battery-full"
+            elif int(msg) <= 80 and int(msg) > 75:
+                self.icon = "fas fa-battery-three-quarters"
+            elif int(msg) <= 75 and int(msg) > 50:
+                self.icon = "fas fa-battery-half"
+            elif int(msg) <= 50 and int(msg) > 25:
+                print("menor que 50 y mayor que 25")
+                self.icon = "fas fa-battery-quarter"
+            elif int(msg) <= 25 and int(msg) > 0:
+                self.icon ='fas fa-battery-empty'
+        except Exception as E:
+            self.connected = False
+            print("Error: ")
+            print(E)
+        s_point.close()
+
+class CheckStartingBlock:
+    def __init__(self, get_response):
+        self.get_response = get_response
+        pass
+
+    def __call__(self, request):
+        starting_block = StartingBlock(
+                host = "10.20.1.56",
+                port = 50,
+                )
+        starting_block.get_charge()
+
+        request.starting_block = starting_block
+
+        response = self.get_response(request)
+        return response
 
 
 
