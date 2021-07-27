@@ -112,6 +112,7 @@ void loop() {
 
            a = LoadCell_1.getData();
            b = LoadCell_2.getData();
+           send_data(client, a, b, start_millis);
 
           // receive command from serial terminal, send 't' to initiate tare operation:
           if (Serial.available() > 0) {
