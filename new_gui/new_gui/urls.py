@@ -18,14 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 #local views
-from .views import (serial_list, report_page, i2c_page,
-        home, update_view
+from .views import (serial_list, home, update_view,
         )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),
-    path('graph/', report_page, name='report_page'),
     path('update/', update_view, name='UpdateView'),
     path(
         'admin2',
