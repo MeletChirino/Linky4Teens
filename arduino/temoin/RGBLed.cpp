@@ -106,7 +106,7 @@ void RGBLed::test() {
   int delay_ = 500;
   if (_buzz_state) {
     set_red();
-    analogWrite(_buzz, 88);
+      analogWrite(_buzz, 88);
     delay(delay_);
     set_green();
     analogWrite(_buzz, 150);
