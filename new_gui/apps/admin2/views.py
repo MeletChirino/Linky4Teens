@@ -127,7 +127,7 @@ class UpdateCoachView(UpdateView):
         return super().form_valid(form)
 
 class ListCoachView(ListView):
-    print("coach list")
+    #print("coach list")
     model = Coach
     template_name = 'coach_list.html'
 
