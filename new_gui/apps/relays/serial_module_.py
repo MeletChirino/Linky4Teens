@@ -1,10 +1,11 @@
+#python
 import os
 import sys
 import glob
 import serial
 import time
+from pathlib import Path
 
-from apps.start_block.views import generate_file_name
 
 def serial_ports():
     """ Lists serial port names
@@ -33,20 +34,27 @@ def serial_ports():
         except (OSError, serial.SerialException):
             pass
     #pop out default serial device
-    index = result.index('/dev/ttyAMA0')
-    result.pop(index)
+    try:
+        index = result.index('/dev/ttyAMA0')
+        result.pop(index)
+    except:
+        pass
 
     return result
 
-def get_data():
+def get_data(port_name, file_name, **kwargs):
     print("Connecting to serial device")
     temoin = serial.Serial(
-            '/dev/ttyUSB0',
+            port_name,
             9600,
             timeout=.1
             )
-    file_name = generate_file_name()
-    file_path = F"{file_name}.csv"
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    file_path = os.path.join(
+            BASE_DIR,
+            F"static/data/{file_name}.csv"
+           )
+    print(file_path)
     print("esperalooo")
     time.sleep(4)
     print("sale\n")
@@ -60,7 +68,7 @@ def get_data():
     try:
         while not incomming_data == b'!':
             incomming_data = temoin.read()
-            if( not(
+            if( not(#si cest pas \n ni \r
                 incomming_data == b'\n'
                 or
                 incomming_data == b'\r'
@@ -69,12 +77,15 @@ def get_data():
                 llega += incomming_data
 
             if(incomming_data == b'\n'):
-                print(F'==> {ascii(llega.decode())}')
+                #print(F'==> {ascii(llega.decode())}')
                 file.write(F"{ascii(llega.decode())}\n")
                 llega = b""
                 incomming_data = b''
     except:
         pass
+
+
+    file.close()
 
     temoin.close()
 
