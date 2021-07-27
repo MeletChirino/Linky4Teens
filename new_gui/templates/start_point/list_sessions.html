@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Liste des athletes</h1>
+	<h1 class="h3 mb-2 text-gray-800">Liste des Sessions</h1>
 
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
@@ -40,17 +40,35 @@
 							<td>
 								{% if session.athlete.photo %}
 								<div>
+	<a href="{% url "admin2:DetailAthlete" session.athlete.numero_id %}">
 									<img width="20"	class="rounded-circle" src="/media/{{session.athlete.photo}}">
+	</a>
 								</div>
 								{% endif %}
 								<a href="{% url "start_block:DeleteSession" session.id %}">
 									<i class="fas fa-trash"></i>
 								</a>
 							</td>
-							<td>{{session.athlete}}</td>
-							<td>{{session.coach}}</td>
-							<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
-							<td><a href="static/data/{{session.data}}.csv">fichier.csv</a></td>
+							<td>
+	<a href="{% url "admin2:DetailAthlete" session.athlete.numero_id %}">
+								{{session.athlete}}
+	</a>
+							</td>
+							<td>
+								<a href="{% url "admin2:DetailCoach" session.coach.numero_id %}">
+									{{session.coach}}
+								</a>
+							</td>
+							<th>
+								<a href="{% url "start_block:DetailSession" session.id %}">
+									{{session.created}}
+								</a>
+							</th>
+							<td>
+								<a href="static/data/{{session.data}}.csv">
+									fichier.csv
+								</a>
+							</td>
 						</tr>
 							{% endfor %}
 					</tbody>

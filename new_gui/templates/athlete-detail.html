@@ -7,6 +7,9 @@
 
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">{{object.nom}} {{object.prenom}}</h1>
+	<a href="{% url "admin2:UpdateAthlete" object.numero_id %}">
+		Modifier
+	</a>
 	<div>
 		<img width="200"	class="rounded-circle" src="/media/{{object.photo}}">
 	</div>
@@ -45,14 +48,20 @@
 							<td><!-- photo de pforfil -->
 								{% if session.coach.photo %}
 								<div>
+								<a href="{% url "admin2:DetailCoach" session.coach.numero_id %}">
 									<img width="20"	class="rounded-circle" src="/media/{{session.coach.photo}}">
+								</a>
 								</div>
 								{% endif %}
 								<a href="{% url "start_block:DeleteSession" session.id %}">
 									<i class="fas fa-trash"></i>
 								</a>
 							</td>
-								<th>{{session.coach}}</th>
+								<th>
+								<a href="{% url "admin2:DetailCoach" session.coach.numero_id %}">
+									{{session.coach}}
+								</a>
+								</th>
 							<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
 								<th>{{session.max_force_left}}</th>
 								<th>{{session.max_force_right}}</th>

@@ -7,12 +7,14 @@
 
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">{{object.nom}} {{object.prenom}}</h1>
+	<a href="{% url "admin2:UpdateCoach" object.numero_id %}">
+		Modifier
+	</a>
 	{% if object.photo %}
 	<div>
 		<img width="200"	class="rounded-circle" src="/media/{{object.photo}}">
 	</div>
 	{% endif %}
-
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
@@ -50,14 +52,20 @@
 							<td>
 								{% if session.athlete.photo %}
 								<div>
+								<a href="{% url "admin2:DetailAthlete" session.athlete.numero_id %}">
 									<img width="20"	class="rounded-circle" src="/media/{{session.athlete.photo}}">
+								</a>
 								</div>
 								{% endif %}
 								<a href="{% url "start_block:DeleteSession" session.id %}">
 									<i class="fas fa-trash"></i>
 								</a>
 							</td>
-							<th>{{session.athlete}}</th>
+							<th>
+								<a href="{% url "admin2:DetailAthlete" session.athlete.numero_id %}">
+								{{session.athlete}}
+								</a>
+							</th>
 							<th>{{session.athlete.categorie}}</th>
 							<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
 								<th>{{session.max_force_left}}</th>
