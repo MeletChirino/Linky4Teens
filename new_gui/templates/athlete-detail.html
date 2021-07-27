@@ -21,37 +21,42 @@
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
+							<th>Pic</th>
 							<th>Coach</th>
 							<th>Date</th>
 							<th>Max Force Gauche</th>
 							<th>Max Force Droite</th>
 							<th>Fichier</th>
-							<th>Eliminer</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
+							<th>Pic</th>
 							<th>Coach</th>
 							<th>Date</th>
 							<th>Max Force Gauche</th>
 							<th>Max Force Droite</th>
 							<th>Fichier</th>
-							<th>Eliminer</th>
 						</tr>
 					</tfoot>
 					<tbody>
 							{% for session in sessions %}
 						<tr>
+							<td><!-- photo de pforfil -->
+								{% if session.coach.photo %}
+								<div>
+									<img width="20"	class="rounded-circle" src="/media/{{session.coach.photo}}">
+								</div>
+								{% endif %}
+								<a href="{% url "start_block:DeleteSession" session.id %}">
+									<i class="fas fa-trash"></i>
+								</a>
+							</td>
 								<th>{{session.coach}}</th>
 							<th><a href="{% url "start_block:DetailSession" session.id %}">{{session.created}} </a></th>
 								<th>{{session.max_force_left}}</th>
 								<th>{{session.max_force_right}}</th>
 								<th><a href="static/data/{{session.data}}.csv">fichier.csv</a></th>
-								<td>
-									<a href="{% url "start_block:DeleteSession" session.id %}">
-										<i class="fas fa-trash"></i>
-									</a>
-								</td>
 						</tr>
 						{% endfor %}
 					</tbody>
