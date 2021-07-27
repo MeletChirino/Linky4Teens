@@ -23,8 +23,8 @@
 							<th>Numero ID</th>
 							<th>Nom</th>
 							<th>Prenom</th>
+							<th>Categorie Entraine</th>
 							<th>Date de Naissance</th>
-							<th>Categorie</th>
 							<th>Membre depuis</th>
 					</thead>
 					<tfoot>
@@ -33,37 +33,35 @@
 							<th>Numero ID</th>
 							<th>Nom</th>
 							<th>Prenom</th>
+							<th>Categorie Entraine</th>
 							<th>Date de Naissance</th>
-							<th>Categorie</th>
 							<th>Membre depuis</th>
 						</tr>
 					</tfoot>
 					<tbody>
-							{% for athlete in object_list %}
+							{% for coach in object_list %}
 						<tr>
-							<td><!-- photo de pforfil -->
-								{% if athlete.photo %}
+							<td>
+								{% if coach.photo %}
 								<div>
-									<img width="20"	class="rounded-circle" src="/media/{{athlete.photo}}">
+									<img width="20"	class="rounded-circle" src="/media/{{coach.photo}}">
 								</div>
 								{% endif %}
-								<a href="{% url "admin2:DeleteAthlete" athlete.id %}">
-									<i class="fas fa-trash"></i>
-								</a>
-								<td><!-- numero identification -->
-								<a href="{% url "admin2:DetailAthlete" athlete.numero_id %}">
-										{{athlete.numero_id}}
+							</td>
+								<td>
+								<a href="{% url "admin2:DetailCoach" coach.numero_id %}">
+										{{coach.numero_id}}
 								</a>
 								<br>
-								<a href="{% url "admin2:UpdateAthlete" athlete.numero_id %}">
+								<a href="{% url "admin2:UpdateCoach" coach.numero_id %}">
 										Modifier
 								</a>
 								</td>
-								<td>{{athlete.nom}}</td>
-								<td>{{athlete.prenom}}</td>
-								<td>{{athlete.date_naissance}}</td>
-								<td>{{athlete.categorie}}</td>
-								<td>{{athlete.created}}</td>
+								<td>{{coach.nom}}</td>
+								<td>{{coach.prenom}}</td>
+								<td>{{coach.categorie}}</td>
+								<td>{{coach.date_naissance}}</td>
+								<td>{{coach.created}}</td>
 						</tr>
 							{% endfor %}
 					</tbody>

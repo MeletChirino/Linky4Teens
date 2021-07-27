@@ -1,10 +1,57 @@
 '''Math and plotting functions used in views file'''
+#django modules
+from django.shortcuts import redirect
 #python modules
 import csv
 import numpy as np
 from matplotlib import pyplot as plt
 import os
 from pathlib import Path
+import socket
+
+def save_csv_data(file_name):
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    file_path = os.path.join(
+            BASE_DIR,
+            F"static/data/{file_name}.csv"
+            )
+    print(file_path)
+    file = open(file_path, "a")
+
+    s_point = socket.socket()
+    port = 50
+    host = "10.20.1.56"
+    print(F"Connecting to {host} in port {port}")
+    s_point.settimeout(10)
+    try:
+        s_point.connect((host, port))
+        s_point.settimeout(None)
+        message = b"1"
+        s_point.send(message)
+
+        data = b""
+        number = 0
+        llega = b""
+        print(F'Receiving data in {file_name}')
+        while (not data == b"!"):
+            data = s_point.recv(1)
+            #print(data)
+            llega += data
+            if (data == b"\n"):
+                number += 1
+                print(F"{number} = {str(llega)}")
+                file.write(F"{llega.decode('ascii')}")
+                llega = b""
+    except OSError:
+        return redirect("home")
+    except Exception as E:
+        print("Error: ")
+        print(E)
+        return redirect("home")
+
+    file.close()
+    s_point.close()
+
 
 def read_csv_data(file_name):
     file_handle = open(file_name, 'r', encoding='utf-8')

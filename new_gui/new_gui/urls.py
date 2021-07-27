@@ -27,7 +27,18 @@ urlpatterns = [
     path('i2c/<int:number>', i2c_page),
     path('home/', home, name='home'),
     path('graph/', report_page, name='report_page'),
-    path('admin2', include(('apps.admin2.urls','admin2'), namespace='admin2')),
+    path(
+        'admin2',
+        include(
+            ('apps.admin2.urls','admin2'),
+            namespace='admin2')
+        ),
+    path(
+        'relays',
+        include(
+            ('apps.relays.urls','relays'),
+            namespace='relays')
+        ),
     path(
         'start_block',
         include(

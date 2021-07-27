@@ -12,30 +12,19 @@
 								<div class="p-5">
 										<div class="text-center">
 											<h1 class="h4 text-gray-900 mb-4">{{ title }}</h1>
-											<img
-											src="{% static "img/balma_logo.png" %}"
-											width=120
-											>
-											<br>
-											Starting Block {{ start_block }}
-											{% if start_block == "Connected!" %}
-											<br>
-											<i class="{{battery_icon}}"></i>
-											{{ charge }}%
-											{% endif %}
-											<br>
-											{% if serial_ports %}
-											Temoins connectes <br>
-											{% for port in serial_ports %}
-											{{ port }}
-											<br>
-											{% endfor %}
-											{% endif %}
 										</div>
+										<form method="POST" enctype="multipart/form-data" class="user">
+											{% csrf_token %}
+												<div class="form-group row">
+													{{ form.as_p }}
+												</div>
+												<input type="submit" value="Send" class="btn btn-primary btn-user btn-block">
+										</form>
 								</div>
 						</div>
 				</div>
 			</div>
 	</div>
 
+</div>
 {% endblock %}

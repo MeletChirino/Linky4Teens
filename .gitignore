@@ -8,10 +8,10 @@ circuits/
 
 # -- temporary files --
 **.swp
+**.swo
 
 # -- Doxygen Files --
 **/html/**
-new_gui/db.sqlite3
 arduino/temoin/temoin.ino
 new_gui/new_gui/__pycache__/
 
@@ -38,3 +38,13 @@ Thumbs.db
 # -- 3d files --
 3d_models/*
 arduino/temoin/latex/
+
+# -- csv example files --
+**.csv
+
+
+# -- backup files --
+**.BAK
+
+# -- database --
+new_gui/db.sqlite3

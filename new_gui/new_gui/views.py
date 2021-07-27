@@ -9,23 +9,28 @@ import socket
 from django.shortcuts import render, redirect
 
 # serial functions
-from .serial_ports import serial_ports
+from apps.relays.serial_module_ import serial_ports
 
 #i2c and electronic modules
 from smbus import SMBus
 
 def home(request):
     template_name = 'home.html'
+    info = {
+            'start_block': 'Disconnected',
+            'title': 'Bienvenu',
+            }
+
+    #serial ports
+    serial_ports_ = serial_ports()
+    info['serial_ports'] = serial_ports_
+
     s_point = socket.socket()
     s_point.settimeout(10)
     port = 50
     host = "10.20.1.56"
     start_time = time.time()
     print(F"Connecting to {host} in port {port}")
-    info = {
-            'start_block': 'Disconnected',
-            'title': 'Bienvenu',
-            }
     try:
         s_point.connect((host, port))
     except Exception as E:
@@ -48,22 +53,35 @@ def home(request):
         print(F'Receiving data ')
         while (not data == b"!"):
             data = s_point.recv(1)
-            #print(data)
+            print(F"data = {data}")
             llega += data
             if (data == b"\n"):
                 number += 1
                 print(F"{number} = {str(llega)}")
                 msg = llega.decode('ascii')
                 print(F"{number} = {str(msg)}")
-                #file.write(F"{llega.decode('ascii')}")
                 llega = b""
                 info['start_block'] = "Connected!"
+                info['charge'] = msg
                 print(F'Message {msg}')
+        info['battery_icon'] = '?'
+        if int(msg) > 80:
+            info['battery_icon'] = "fas fa-battery-full"
+        elif int(msg) <= 80 and int(msg) > 75:
+            info['battery_icon'] = "fas fa-battery-three-quarters"
+        elif int(msg) <= 75 and int(msg) > 50:
+            info['battery_icon'] = "fas fa-battery-half"
+        elif int(msg) <= 50 and int(msg) > 25:
+            print("menor que 50 y mayor que 25")
+            info['battery_icon'] = "fas fa-battery-quarter"
+        elif int(msg) <= 25:
+            info['battery_icon'] = 'fas fa-battery-empty'
 
     except Exception as E:
         print("Error: ")
         print(E)
 
+    print(F"message received = {info['battery_icon']}")
     s_point.close()
 
     return render(
