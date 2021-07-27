@@ -8,10 +8,10 @@ circuits/
 
 # -- temporary files --
 **.swp
+**.swo
 
 # -- Doxygen Files --
 **/html/**
-new_gui/db.sqlite3
 arduino/temoin/temoin.ino
 new_gui/new_gui/__pycache__/
 
@@ -27,3 +27,13 @@ new_gui/media/**
 new_gui/static/data/**
 new_gui/static/img/**
 new_gui/pyclient.py
+
+# -- csv example files --
+**.csv
+
+
+# -- backup files --
+**.BAK
+
+# -- database --
+new_gui/db.sqlite3
