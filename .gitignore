@@ -27,6 +27,17 @@ new_gui/media/**
 new_gui/static/data/**
 new_gui/static/img/**
 new_gui/pyclient.py
+new_gui/apps/start_block/2021_6_8_10_14_38.csv
+start_point/Mannuel_Utilisation_Groupe7.pdf
+start_point/Start_point_server/data/HX711_ADC-master/
+start_point/calibration/
+start_point/Groupe7_ISTR_Starting_Block_Rapport_Final.pdf
+Thumbs.db
+2021_7_1_14_45_8.csv
+
+# -- 3d files --
+3d_models/*
+arduino/temoin/latex/
 
 # -- csv example files --
 **.csv
