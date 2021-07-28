@@ -23,11 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ccourmbfm4m_c4h3g@d$+7rs_wtpl&wip6^)tc2p)l-&x!_+d9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = False
+SERVER_EMAIL = "melet.chirino@gmail.com"
 
 ALLOWED_HOSTS = [
         "10.20.1.1",
-        "192.168.1.72",
+        #"192.168.1.72",
         'linky4teens.sytes.net',
         ]
 
