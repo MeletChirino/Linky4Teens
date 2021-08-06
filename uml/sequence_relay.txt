@@ -1,0 +1,31 @@
+@startuml
+actor Athlete
+participant Temoin
+participant "Barrieres IR" as barrieres
+Athlete -> Temoin : Initialize
+activate Athlete
+activate Temoin
+Temoin -> Temoin : Wait until Start Race
+barrieres -> Temoin : Start Race 
+loop [Until Race Ends]
+	activate barrieres
+
+	loop [Until Zone Changes]
+		Temoin -> Temoin : Save Accelerometer Data
+	end
+	barrieres -> Temoin : Start Relay Zone
+
+	loop [Until Zone Changes]
+		Temoin -> Temoin : Save Accelerometer Data
+		Temoin -> Temoin : Check Relay State
+	end
+
+	barrieres -> Temoin : End Relay Zone
+end
+barrieres -> Temoin : Race Ends
+deactivate barrieres
+deactivate Athlete
+Temoin -> Temoin : Get Ready to send data Over the Interface
+deactivate Temoin
+
+@enduml

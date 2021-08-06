@@ -1,0 +1,53 @@
+@startuml
+package "Temoin"{
+	[Microcontroler] as microc
+	[Accelerometer] as accel
+	database [SDCard] as sdcard
+	[Touch Sensor 1] as touch1
+	[Touch Sensor 2] as touch2
+	[Vibrator] as motor
+	[IR Receiver] as irrecv
+	[RGB LED] as led_rgb
+}
+
+package "In Track Elements"{
+	[Start Race Barriere] as barriere1
+	[Start Zone Barriere] as barriere2 
+	[End Zone Barriere] as barriere3 
+	[End Race Barriere] as barriere4
+
+}
+package "Dock"{
+	database Raspberry
+	[Serial To USB] as serial
+	
+}
+package "Starting_Block"{
+	[Force Sensor Left Foot] as force_left
+	[Force Sensor Right Foot] as force_right
+	[ESP32] as esp32
+} 
+force_left --> esp32
+force_right --> esp32
+esp32 --> Raspberry : WiFi Direct
+
+Athletes --> Temoin
+Athletes --> Starting_Block
+
+barriere1 --> irrecv
+barriere2 --> irrecv
+barriere3 --> irrecv
+barriere4 --> irrecv
+
+accel --> microc
+microc --> sdcard
+touch1 --> microc
+touch2 --> microc
+microc --> motor 
+irrecv --> microc 
+microc --> led_rgb 
+
+microc --> serial : Serial Connection
+serial --> Raspberry
+Raspberry --> Interface
+@enduml
