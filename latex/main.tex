@@ -23,8 +23,8 @@
 \bibliographystyle{abbrv}
 
 \begin{document}
-\title{Compte rendu Initiation a la recherche}
-\author{CHIRINO CAICEDO Melet \and RIBEIRO GOMES Bruno}
+\title{Rapport Stage}
+\author{CHIRINO CAICEDO Melet}
 \begin{titlepage}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
@@ -51,25 +51,26 @@
 %	AUTHOR SECTION
 %----------------------------------------------------------------------------------------
 
-\begin{minipage}{0.4\textwidth}
-\begin{flushleft} \large
-\markboth{Pojet en \LaTeX}
-\emph{Auteurs:}\\
-\textsc{CHIRINO} Melet \\ % Your name
-%\textsc{RIBEIRO} Bruno % Your name
-\end{flushleft}
-\end{minipage}
-~
-\begin{minipage}{0.5\textwidth}
-\begin{flushright} \large
-\emph{Tuteur:} \\
-\textsc{RIVIERE} Nicolas  % Supervisor's Name
-\end{flushright}
-\end{minipage}\\[2cm]
+% \begin{minipage}{0.4\textwidth}
+% \begin{flushleft} \large
+% \markboth{Pojet en \LaTeX}
+% \emph{Auteurs:}\\
+% \textsc{CHIRINO} Melet \\ % Your name
+% %\textsc{RIBEIRO} Bruno % Your name
+% \end{flushleft}
+% \end{minipage}
+% ~
+% \begin{minipage}{0.5\textwidth}
+% \begin{flushright} \large
+% \emph{Tuteur:} \\
+% \textsc{RIVIERE} Nicolas  \\% Supervisor's Name
+% \textsc{LABIT} Yann% Supervisor's Name
+% \end{flushright}
+% \end{minipage}\\[2cm]
 
-% If you don't want a supervisor, uncomment the two lines below and remove the section above
-%\Large \emph{Author:}\\
-%John \textsc{Smith}\\[3cm] % Your name
+ % If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Author:}\\
+\textsc{CHIRINO CAICEDO} Melet David \\[2cm] % Your name
 
 %----------------------------------------------------------------------------------------
 %	DATE SECTION
@@ -98,40 +99,92 @@
 
 \section{Introduction}
 %Aqui explico de que se trata el proyecto y lo que habiamos hecho antes como TER
-El proyecto linky4teens es un proyecto que busca desarrollar prototipos que ayuden a mejorar el desempenho en atletas jovenes llevado por el club Balma y el Profesor Yann LABIT. El proyecto busca crear dispositivos para revisar el desempenho de los atletas y trabajar sobre los errores que se esten cometiendo. 
+Linky4Teens est un projet qui cherche a amelriorer le performance des jeunes athletes avec la technologie et l'electronique. Ce projet est men\'e a bien avec le profeseur Yann LABIT et le club sportif Balma, image \ref{img:LogoBalma}.
+% El proyecto linky4teens es un proyecto que busca desarrollar prototipos que ayuden a mejorar el desempenho en atletas jovenes llevado por el club Balma y el Profesor Yann LABIT. El proyecto busca crear dispositivos para revisar el desempenho de los atletas y trabajar sobre los errores que se esten cometiendo. 
 
-Yo estaba encargado de seguir el desarrollo de dos prototipos desarrollados en proyectos anteriores como proyectos de TER:
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.2\textwidth]{img/LogoBalma.png}
+\caption{Club Balma}
+\label{img:LogoBalma}
+\end{figure}
+
+Ce projet a commenc\'e comme un projet TER dans lequel j'ai travaill\'e dans le developpemment d'un temoin intelligent connect\'e. En tant que stagiaire, j'ai repris le developpement du temoin intelligent connect\'e et aussi un starting block developp\'e par des autres \'etudiants pour un projet TER paralelle.
+% Yo estaba encargado de seguir el desarrollo de dos prototipos desarrollados en proyectos anteriores como proyectos de TER:
 \begin{itemize}
     \item Temoin de relevos inteligente (desarrollado por mi un grupo de amigos)
     \item Starting block
 \end{itemize}
 Estos proyectos al estar financiados por estudiantes estaban bien pero necesitaban mejoras y mucha robustez para funcionar como producto funcional.
 
-%-------------------------- * Desbcripcion * --------------------------------
+%-------------------------- * Descripcion * --------------------------------
 
 \section{Bref description du systeme}
-Aqui vas a mostrar unos cuantos diagramitas UML para explicar como funcionan las cosas dentro tus chocoros
+% Aqui vas a mostrar unos cuantos diagramitas UML para explicar como funcionan las cosas dentro tus chocoros
+En fin du projet TER le projet avait deux prototypes utilis\'ees
+pour deux disciplines d'athletisme differents. 
+
+\item Le temoin a \'et\'e pour la course de relays. Le temoin stocke
+des donn\'ees comme la vitesse et la  position vertical pour
+savoir si les athletes diminuent la vitesse pendant qu'ils font
+le relays. En plus, le temoin capte aussi si le relays est fait 
+dans la zone de relays. Apr\`es le temoin est connect\'e \`a un
+ordinateur pour voir l'information de la course et faires des
+graphiques pour une analise complet. 
+
+\item Le starting block stocke l'information de deux capteurs de force
+plac\'es en-dessous des athletes pour savoir la force utilis\'ee
+en d\'emarrant la course. Cette information \'etait visible
+gr\^ace \`a une courve montr\'ee a travers d'un smartphone.
 
 %-------------------------- * Objetivos * --------------------------------
 
 \section{Objectifs}
-Los objetivos de stage eran rendre plus robuste los prototipos ya existentes y/o los sistemas creados.
+Les objectifs pour le debut du projet etaient rendre les prototypes plus robustes pour une utilisation ulterieur.
+% Los objetivos de stage eran rendre plus robuste los prototipos ya existentes y/o los sistemas creados.
 \begin{itemize}
-    \item Mejorar el dock
-    \item Mejorar los temoins
-    \item Mejorar la interfaz
-    \item Mejorar el Starting block e integrarlo a una unica interfaz de proyecto
+    % \item Mejorar el dock
+    \item Ameliorer le dock pour et rendre plus facile son
+	utilisation car en fin du projet TER \'etait un 
+	peu delicat et compliqu\'e \`a utliser.
+    % \item Mejorar la interfaz
+    \item Ameliorer l'interface.
+    \item Rendre les temoins plus robustes et stocker plus
+	d'information dedans.
+    \item Rendre plus robuste le prototype du starting block
+	et l'integrer \`a l'interface d\'ej\`a developp\'e.
 \end{itemize}
-\section{Mejoras propuestas}
+\section{Ameliorations propos\'ees}
 \begin{itemize}
-    \item Dock: utilisar una raspberry pi como dock porque esta puede usar conexion wifi direct a cualquier dispositivo que pueda acceder a internet sin necesidad de instalar porgramas o aplicaciones. 
-    \item Temoin: el temoin estaba soldado en una pcb universal y era muy endeble, habia que volverlo mas robusto y, el punto mas importante, no guardaba suficiente informacion, por lo tanto las mediciones eran medio jopos. Ademas el sistema de barreras IR era poco robusto. Todo eso debia mejorarlo.
-    \item Interfaz: la interfaz utilisaba un deploy de django (un framework web escrito en python porque? porque yo lo se usar, asi de simple). Pero estaba muy simple por propias limitaciones del sistema pero con mas financiacion se podia mejorar todo.
-    \item Starting block: conectarlo por wifi a la interfaz para que se pueda mejar desde ahi de manera practica y sencilla. A peticion del club una base de datos no quedaria nada mal para organizar la informacion.
+    % \item Dock: utilisar una raspberry pi como dock porque esta puede usar conexion wifi direct a cualquier dispositivo que pueda acceder a internet sin necesidad de instalar porgramas o aplicaciones. 
+	\item Utiliser une raspberry pi comme dock parce
+	qu'elle peut se connecter a tous les appareils via
+	WiFi direct pour eviter avoir installer l'interface 
+	dans tous les ordinateurs du club. En plus, la
+	raspbery peut stocker une base de donn\'ees avec
+	l'information de tous les athletes et coachs.
+
+
+    % \item Temoin: el temoin estaba soldado en una pcb universal y era muy endeble, habia que volverlo mas robusto y, el punto mas importante, no guardaba suficiente informacion, por lo tanto las mediciones eran medio jopos. Ademas el sistema de barreras IR era poco robusto. Todo eso debia mejorarlo.
+	\item Faire une pcb \`a l'aide d'un CAO pour ajouter
+	plus de compossants et rendre la partie electronique
+	plus robuste. En plus, ajouter des composants pour 
+	une utilisation plus confortable chez les athletes.
+
+
+    % \item Interfaz: la interfaz utilisaba un deploy de django (un framework web escrito en python porque? porque yo lo se usar, asi de simple). Pero estaba muy simple por propias limitaciones del sistema pero con mas financiacion se podia mejorar todo.
+	\item Ajouter une base de donn\'ees dans l'interface de tous les acteurs
+	su club Balma pour avoir une tra\ccabilit\'e de la
+	performance des athletes. Se communiquer avec le starting
+	block et manipuler ses donn\'ees. Rendre l'interface
+	multiplataforme.
+
+
+    % \item Starting block: conectarlo por wifi a la interfaz para que se pueda mejar desde ahi de manera practica y sencilla. A peticion del club una base de datos no quedaria nada mal para organizar la informacion.
 \end{itemize}
 
 %-------------------------- * Obligaciones administrativas * --------------------------------
-\section{Obligaciones Administrativas}
+\section{Devoirs Administratives}
 Al ser un proyecto financiado por la fac tenia ciertas obligaciones administrativas como enviarle poticiones al tecnincien encharge jerome raybayrol para hacer los debis y pedir los componenetes. Ademas se me suministraron herramientas como un osciloscopio y un taladro para poder trabajar a distancia (tu sabes esto de la situacion del mundo y tales)
 %-------------------------- * Obligaciones Tecnicas * --------------------------------
 \section{Obligaciones Tecnicas}
