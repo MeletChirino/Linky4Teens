@@ -48,3 +48,7 @@ arduino/temoin/latex/
 
 # -- database --
 new_gui/db.sqlite3
+latex/main.log
+latex/main.aux
+latex/main.toc
+latex/main.pdf
