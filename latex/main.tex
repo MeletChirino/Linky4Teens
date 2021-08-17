@@ -125,18 +125,20 @@ Estos proyectos al estar financiados por estudiantes estaban bien pero necesitab
 En fin du projet TER le projet avait deux prototypes utilis\'ees
 pour deux disciplines d'athletisme differents. 
 
-\item Le temoin a \'et\'e pour la course de relays. Le temoin stocke
-des donn\'ees comme la vitesse et la  position vertical pour
-savoir si les athletes diminuent la vitesse pendant qu'ils font
-le relays. En plus, le temoin capte aussi si le relays est fait 
-dans la zone de relays. Apr\`es le temoin est connect\'e \`a un
-ordinateur pour voir l'information de la course et faires des
-graphiques pour une analise complet. 
+\begin{itemize}
+	\item Le temoin a \'et\'e pour la course de relays. Le temoin stocke
+	des donn\'ees comme la vitesse et la  position vertical pour
+	savoir si les athletes diminuent la vitesse pendant qu'ils font
+	le relays. En plus, le temoin capte aussi si le relays est fait 
+	dans la zone de relays. Apr\`es le temoin est connect\'e \`a un
+	ordinateur pour voir l'information de la course et faires des
+	graphiques pour une analise complet. 
 
-\item Le starting block stocke l'information de deux capteurs de force
-plac\'es en-dessous des athletes pour savoir la force utilis\'ee
-en d\'emarrant la course. Cette information \'etait visible
-gr\^ace \`a une courve montr\'ee a travers d'un smartphone.
+	\item Le starting block stocke l'information de deux capteurs de force
+	plac\'es en-dessous des athletes pour savoir la force utilis\'ee
+	en d\'emarrant la course. Cette information \'etait visible
+	gr\^ace \`a une courve montr\'ee a travers d'un smartphone.
+\end{itemize}
 
 %-------------------------- * Objetivos * --------------------------------
 
@@ -175,7 +177,7 @@ Les objectifs pour le debut du projet etaient rendre les prototypes plus robuste
 
     % \item Interfaz: la interfaz utilisaba un deploy de django (un framework web escrito en python porque? porque yo lo se usar, asi de simple). Pero estaba muy simple por propias limitaciones del sistema pero con mas financiacion se podia mejorar todo.
 	\item Ajouter une base de donn\'ees dans l'interface de tous les acteurs
-	su club Balma pour avoir une tra\ccabilit\'e de la
+	su club Balma pour avoir une tra\c abilit\'e de la
 	performance des athletes. Se communiquer avec le starting
 	block et manipuler ses donn\'ees. Rendre l'interface
 	multiplataforme.
@@ -205,13 +207,13 @@ Dans la figure \ref{img:eagle_all} il y a des captures d'ecran.
 En plus, j'ai utilis\'e FlatCAM pour la fabrication de circuits avec la machine CNC.
 % Los logiciel de CAO son muy importantes, para fabricar los circuitos, simularlos y disenhar su fabricacion. Como logiciel utilise Eagle (tambien porque era el que sabia usar). 
 \begin{figure}[!htb]
-\centering
-\subfigure[PCB du circuit]{\includegraphics [height=2in]{img/EagleBoard.png}
-\label{img:eagle:board}}
-\subfigure[Schema du circuit]{\includegraphics [height=2in]{img/EagleSchema.png}
-\label{img:eagle:schema}}
-\caption{Captures d'Eagle}
-\label{img:eagle_all}}
+	\centering
+	\subfigure[PCB du circuit]{\includegraphics [height=2in]{img/EagleBoard.png}
+	\label{img:eagle:board}}
+	\subfigure[Schema du circuit]{\includegraphics [height=2in]{img/EagleSchema.png}
+	\label{img:eagle:schema}}
+	\caption{Captures d'Eagle}
+	\label{img:eagle_all}
 \end{figure}
 % Para los dispositivos 3D utilise la plataforma online OnShape la cual es gratuita y tambien permita compartir los disenhos en 3D con todos los participantes del proyecto (si solo hubiera mas gente) y tambien gestionar las versiones. sur la bibliographie vous trouverez le repo avec les fichiers
 \newline
@@ -221,40 +223,70 @@ En plus, j'ai utilis\'e FlatCAM pour la fabrication de circuits avec la machine 
 	quelques captures d'ecran sur la figure \ref{img:onshape_all}.
 \end{par}
 \begin{figure}[!htb]
-\centering
-\subfigure[Conception de la Barriere IR]{\includegraphics [height=2in]{img/OnShapeBarriere.png}
-\label{img:onshape:barriere}}
-\subfigure[Boite du starting block]{\includegraphics [height=2in]{img/OnShapeSB.png}
-\label{img:onshape:sb}}
-\subfigure[Conception mecanique du temoin]{\includegraphics [width=2.7in]{img/OnShapeTemoin.png}
-\label{img:onshape:temoin}}
-\caption{OnShape}
-\label{img:onshape_all}
+	\centering
+	\subfigure[Conception de la Barriere IR]{\includegraphics [height=2in]{img/OnShapeBarriere.png}
+	\label{img:onshape:barriere}}
+	\subfigure[Boite du starting block]{\includegraphics [height=2in]{img/OnShapeSB.png}
+	\label{img:onshape:sb}}
+	\subfigure[Conception mecanique du temoin]{\includegraphics [width=2.7in]{img/OnShapeTemoin.png}
+	\label{img:onshape:temoin}}
+	\caption{OnShape}
+	\label{img:onshape_all}
 \end{figure}
-%Aqui coloca imagenes del repo asi como la url del repo
+`%Aqui coloca imagenes del repo asi como la url del repo
 \subsection{Service electronique de Paul Sabatier}
-Para fabricar circuitos alguien me informo que puedo acceder al servicio de fabricacion electronica de la universidad, tuve que ponerme en contacto con el senhor guillaume Maffre quien me gui por el proceso. A mediados del mes de mayo cambiaron el proceso de metalizacion y al parecer no era tan efectivo como el anterior porque varios circuitos no tenian bien la metalizacion, es el proceso que conecta la capa de arriba con la de abajo. Ademas este proceso tomaba de 3 dias a una semana dependiando de la complejidad del pcb. Por lo cual decidi no usar este servicio a menos que fuera estrictamente necesario.
+% Para fabricar circuitos alguien me informo que puedo acceder al servicio de fabricacion electronica de la universidad, tuve que ponerme en contacto con el senhor guillaume Maffre quien me gui por el proceso. A mediados del mes de mayo cambiaron el proceso de metalizacion y al parecer no era tan efectivo como el anterior porque varios circuitos no tenian bien la metalizacion, es el proceso que conecta la capa de arriba con la de abajo. Ademas este proceso tomaba de 3 dias a una semana dependiando de la complejidad del pcb. Por lo cual decidi no usar este servicio a menos que fuera estrictamente necesario.
+L'universit\'e a une service de fabrication de PCB \`a  
+double couche lequel j'ai utilis\'e parce qu'il y a des 
+PCB tr\`es avec des chemins tr\`es compliqu\'es. 
+Au millieu du mois de Mai le service electronique a 
+chang\'e le process de metalisation qui n'est pas
+ma\^itriss\'e au fond par le technicien et plusieurs 
+circuits fabriqu\'es par eux n'ont pas eu la fiabilit\'e
+attend\'ee. En plus ce proces prenait vers une semaine
+d'attente de ma part donc j'ai decid\'e de ne utiliser
+ce service que si besoin estricte.
 
 \subsection{Manufactura con herramientas de fablab}
-El hecho de trabajar con hardware requiere muchas herramientas y espacio para trabajar, lo cual no tengo en casa. GraciajaDios la fac cuenta con el fablab del cual soy abone y me puedo en servir de todas sus herramientas y maquinas.
+% El hecho de trabajar con hardware requiere muchas herramientas y espacio para trabajar, lo cual no tengo en casa. GraciajaDios la fac cuenta con el fablab del cual soy abone y me puedo en servir de todas sus herramientas y maquinas.
+\begin{par}
+	Pour travailler le hardware il faut avoir de la place pour travailer 
+	et des outils, lequels j'ai trouv\'e au CampuFab. J'\'etais d\'ej\`a
+	familiaris\'e avec l'endroit parce que je suis abonn\'e et donc j'ai
+	pu bien profiter de ce coin du monde. Dans les images \ref{img:CampusFAb}
+	et \ref{img:CircuitsCNCd}
+\end{par}
 
-La primera herramienta que use fue la maquina cnc para fabricar unas pcb pequenhas. Este proceso lo hice con la ayuda del logiciel flatCAM y un simulador de maquinas cnc porque con la situacion sanitaria tenia que priorizar al maximo el teletrabajo.
-
+% La primera herramienta que use fue la maquina cnc para fabricar unas pcb pequenhas. Este proceso lo hice con la ayuda del logiciel flatCAM y un simulador de maquinas cnc porque con la situacion sanitaria tenia que priorizar al maximo el teletrabajo.
 \begin{figure}[!htb]
-\centering
-\includegraphics[width=0.2\textwidth]{img/CNCRouter.jpg}
-\caption{Machine CNC pour le routage des PCB}
-\label{img:RouterCNC}
+	\centering
+	\subfigure[Machine CNC]{\includegraphics[width=0.2\textwidth]{img/CNCRouter.jpg}
+	\label{img:RouterCNC}}
+	\subfigure[FlatCAM]{\includegraphics[width=0.65\textwidth]{img/FlatCAM.png}
+	\label{img:eagle:schema}}
+	\caption{Fabrication chez FabLab}
+	\label{img:CampusFab}
 \end{figure}
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.2\textwidth]{img/FlatCAM.png}
-\caption{Logiciel pour le routage des PCB}
-\label{img:flatcam}
-\end{figure}
+% \begin{figure}[!htb]
+% \centering
+% \includegraphics[width=0.2\textwidth]{img/CNCRouter.jpg}
+% \caption{Machine CNC pour le routage des PCB}
+% \label{img:RouterCNC}
+% \end{figure}
 
-Luego de hacer los circuitos utilice la estacion de soldadura para montarlos componentes en la pcb.
+% \begin{figure}[!htb]
+% \centering
+% \includegraphics[width=0.2\textwidth]{img/FlatCAM.png}
+% \caption{Logiciel pour le routage des PCB}
+% \label{img:flatcam}
+% \end{figure}
+
+% Luego de hacer los circuitos utilice la estacion de soldadura para montarlos componentes en la pcb.
+\begin{par}
+	Apr\`es avoir fabriqu\'e les PCB j'ai soud\'e les composants pour monter le
+	circuit.
+\end{par}
 
 \begin{figure}[!htb]
 \centering
