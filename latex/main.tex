@@ -3,6 +3,7 @@
 
 \documentclass[12pt]{article}
 \usepackage{natbib}
+\usepackage{hyperref}
 \usepackage[french]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{lipsum}
@@ -192,10 +193,17 @@ outils de l'universit\'e. Vu les conditions sanitaires j'ai du aussi pr\^eter
 des outils pour avancer en teletravail.
 
 %-------------------------- * Obligaciones Tecnicas * --------------------------------
-\section{}
-Este proyecto tuvo muchas cosas desarrolladas en computador y muchisima programacion. Sin embargo tambie tuve mucha accion en el fablab de la fac para fabricar piezas en la impresora 3d, la cortadora laser y la maquina cnc para hacer unos circuitos.
+\section{Devoirs Techniques}
+% Este proyecto tuvo muchas cosas desarrolladas en computador y muchisima programacion. Sin embargo tambie tuve mucha accion en el fablab de la fac para fabricar piezas en la impresora 3d, la cortadora laser y la maquina cnc para hacer unos circuitos.
+Ce projet a eu beaucoup des choses develop\'es en CAO et pas mal de programation, mais aussi 
+le travail sur le hardware a \'et\'e fait chez CampuFab avec la decoupe laser, la machine CNC,
+les imprimantes 3D et ses outils en general comme les perceuses, les pinces, etc.
 \subsection{Logiciels de CAO}
-Los logiciel de CAO son muy importantes, para fabricar los circuitos, simularlos y disenhar su fabricacion. Como logiciel utilise Eagle (tambien porque era el que sabia usar). 
+Dans ce projet j'ai utilis\'e plusieurs logiciels de CAO. Pour la conception 
+electronique j'ai utilis\'e Eagle parce qu'il est gratuit et facile a utiliser.i
+Dans la figure \ref{img:eagle_all} il y a des captures d'ecran.
+En plus, j'ai utilis\'e FlatCAM pour la fabrication de circuits avec la machine CNC.
+% Los logiciel de CAO son muy importantes, para fabricar los circuitos, simularlos y disenhar su fabricacion. Como logiciel utilise Eagle (tambien porque era el que sabia usar). 
 \begin{figure}[!htb]
 \centering
 \subfigure[PCB du circuit]{\includegraphics [height=2in]{img/EagleBoard.png}
@@ -203,8 +211,15 @@ Los logiciel de CAO son muy importantes, para fabricar los circuitos, simularlos
 \subfigure[Schema du circuit]{\includegraphics [height=2in]{img/EagleSchema.png}
 \label{img:eagle:schema}}
 \caption{Captures d'Eagle}
+\label{img:eagle_all}}
 \end{figure}
-Para los dispositivos 3D utilise la plataforma online OnShape la cual es gratuita y tambien permita compartir los disenhos en 3D con todos los participantes del proyecto (si solo hubiera mas gente) y tambien gestionar las versiones. sur la bibliographie vous trouverez le repo avec les fichiers
+% Para los dispositivos 3D utilise la plataforma online OnShape la cual es gratuita y tambien permita compartir los disenhos en 3D con todos los participantes del proyecto (si solo hubiera mas gente) y tambien gestionar las versiones. sur la bibliographie vous trouverez le repo avec les fichiers
+\newline
+\begin{par}
+	Pour la conception mecanique j'ai utilis\'e la plateforme \href{https://www.onshape.com/}{OnShape}
+	parce qu'elle est gratuit et permet de partager les conceptions au et a mesure du developpement.
+	quelques captures d'ecran sur la figure \ref{img:onshape_all}.
+\end{par}
 \begin{figure}[!htb]
 \centering
 \subfigure[Conception de la Barriere IR]{\includegraphics [height=2in]{img/OnShapeBarriere.png}
@@ -214,6 +229,7 @@ Para los dispositivos 3D utilise la plataforma online OnShape la cual es gratuit
 \subfigure[Conception mecanique du temoin]{\includegraphics [width=2.7in]{img/OnShapeTemoin.png}
 \label{img:onshape:temoin}}
 \caption{OnShape}
+\label{img:onshape_all}
 \end{figure}
 %Aqui coloca imagenes del repo asi como la url del repo
 \subsection{Service electronique de Paul Sabatier}
