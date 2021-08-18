@@ -1,6 +1,3 @@
-% This LaTeX was auto-generated from an M-file by MATLAB.
-% To make changes, update the M-file and republish this document.
-
 \documentclass[12pt]{article}
 \usepackage{natbib}
 \usepackage{hyperref}
@@ -100,7 +97,7 @@
 
 \section{Introduction}
 %Aqui explico de que se trata el proyecto y lo que habiamos hecho antes como TER
-Linky4Teens est un projet qui cherche a amelriorer le performance des jeunes athletes avec la technologie et l'electronique. Ce projet est men\'e a bien avec le profeseur Yann LABIT et le club sportif Balma, image \ref{img:LogoBalma}.
+Linky4Teens est un projet qui cherche \`a amelriorer le performance des jeunes athletes avec la technologie et l'electronique. Ce projet est men\'e a bien avec le profeseur Yann LABIT et le club sportif Balma, image \ref{img:LogoBalma}.
 % El proyecto linky4teens es un proyecto que busca desarrollar prototipos que ayuden a mejorar el desempenho en atletas jovenes llevado por el club Balma y el Profesor Yann LABIT. El proyecto busca crear dispositivos para revisar el desempenho de los atletas y trabajar sobre los errores que se esten cometiendo. 
 
 \begin{figure}[!htb]
@@ -112,49 +109,48 @@ Linky4Teens est un projet qui cherche a amelriorer le performance des jeunes ath
 
 Ce projet a commenc\'e comme un projet TER dans lequel j'ai travaill\'e dans le developpemment d'un temoin intelligent connect\'e. En tant que stagiaire, j'ai repris le developpement du temoin intelligent connect\'e et aussi un starting block developp\'e par des autres \'etudiants pour un projet TER paralelle.
 % Yo estaba encargado de seguir el desarrollo de dos prototipos desarrollados en proyectos anteriores como proyectos de TER:
-\begin{itemize}
-    \item Temoin de relevos inteligente (desarrollado por mi un grupo de amigos)
-    \item Starting block
-\end{itemize}
-Estos proyectos al estar financiados por estudiantes estaban bien pero necesitaban mejoras y mucha robustez para funcionar como producto funcional.
+% \begin{itemize}
+%     \item Temoin de relevos inteligente (desarrollado por mi un grupo de amigos)
+%     \item Starting block
+% \end{itemize}
+% Estos proyectos al estar financiados por estudiantes estaban bien pero necesitaban mejoras y mucha robustez para funcionar como producto funcional.
 
 %-------------------------- * Descripcion * --------------------------------
 
 \section{Bref description du systeme}
 % Aqui vas a mostrar unos cuantos diagramitas UML para explicar como funcionan las cosas dentro tus chocoros
 En fin du projet TER le projet avait deux prototypes utilis\'ees
-pour deux disciplines d'athletisme differents. 
+pour deux disciplines d'athletisme differents : Course de 
+relais et un starting block.
 
 \begin{itemize}
-	\item Le temoin a \'et\'e pour la course de relays. Le temoin stocke
+	\item - Le temoin a \'et\'e con\c cu pour la course de relais. Le temoin stocke
 	des donn\'ees comme la vitesse et la  position vertical pour
-	savoir si les athletes diminuent la vitesse pendant qu'ils font
-	le relays. En plus, le temoin capte aussi si le relays est fait 
-	dans la zone de relays. Apr\`es le temoin est connect\'e \`a un
+	savoir des details lorsqu'ils font le relai.
+	En plus, le temoin capte aussi si le relais est fait 
+	dans la zone de relais. Apr\`es le temoin est connect\'e \`a un
 	ordinateur pour voir l'information de la course et faires des
-	graphiques pour une analise complet. 
+	courves pour une analise complet. 
 
-	\item Le starting block stocke l'information de deux capteurs de force
-	plac\'es en-dessous des athletes pour savoir la force utilis\'ee
-	en d\'emarrant la course. Cette information \'etait visible
+	\item - Le starting block stocke l'information de deux capteurs de force
+	plac\'es en-dessous des pieds des athletes pour savoir la force utilis\'ee
+	en d\'emarrant la course. Cette information est visible
 	gr\^ace \`a une courve montr\'ee a travers d'un smartphone.
 \end{itemize}
 
 %-------------------------- * Objetivos * --------------------------------
 
 \section{Objectifs}
-Les objectifs pour le debut du projet etaient rendre les prototypes plus robustes pour une utilisation ulterieur.
+% Les objectifs pour le debut du projet etaient rendre les prototypes plus robustes pour une utilisation ulterieur.
 % Los objetivos de stage eran rendre plus robuste los prototipos ya existentes y/o los sistemas creados.
 \begin{itemize}
-    % \item Mejorar el dock
-    \item Ameliorer le dock pour et rendre plus facile son
+	\item Ameliorer le dock pour et rendre plus facile son
 	utilisation car en fin du projet TER \'etait un 
 	peu delicat et compliqu\'e \`a utliser.
-    % \item Mejorar la interfaz
-    \item Ameliorer l'interface.
-    \item Rendre les temoins plus robustes et stocker plus
+	\item Ameliorer l'interface visuel (GUI en anglais).
+	\item Rendre les temoins plus robustes et stocker plus
 	d'information dedans.
-    \item Rendre plus robuste le prototype du starting block
+	\item Rendre plus robuste le prototype du starting block
 	et l'integrer \`a l'interface d\'ej\`a developp\'e.
 \end{itemize}
 \section{Ameliorations propos\'ees}
@@ -162,25 +158,26 @@ Les objectifs pour le debut du projet etaient rendre les prototypes plus robuste
     % \item Dock: utilisar una raspberry pi como dock porque esta puede usar conexion wifi direct a cualquier dispositivo que pueda acceder a internet sin necesidad de instalar porgramas o aplicaciones. 
 	\item Utiliser une raspberry pi comme dock parce
 	qu'elle peut se connecter a tous les appareils via
-	WiFi direct pour eviter avoir installer l'interface 
+	WiFi direct pour eviter d'installer l'interface 
 	dans tous les ordinateurs du club. En plus, la
 	raspbery peut stocker une base de donn\'ees avec
-	l'information de tous les athletes et coachs.
+	l'information de tous les coachs et les athletes.
 
 
     % \item Temoin: el temoin estaba soldado en una pcb universal y era muy endeble, habia que volverlo mas robusto y, el punto mas importante, no guardaba suficiente informacion, por lo tanto las mediciones eran medio jopos. Ademas el sistema de barreras IR era poco robusto. Todo eso debia mejorarlo.
-	\item Faire une pcb \`a l'aide d'un CAO pour ajouter
-	plus de compossants et rendre la partie electronique
-	plus robuste. En plus, ajouter des composants pour 
-	une utilisation plus confortable chez les athletes.
-
-
+	% \item Faire une pcb \`a l'aide d'un CAO pour ajouter
+	% plus de compossants et rendre la partie electronique
+	% plus robuste. En plus, ajouter des composants pour 
+	% une utilisation plus confortable chez les athletes.
+	\item Ameliorer le temoin de relais pour capter plus d'information
+	et pour rendre plus robuste.
     % \item Interfaz: la interfaz utilisaba un deploy de django (un framework web escrito en python porque? porque yo lo se usar, asi de simple). Pero estaba muy simple por propias limitaciones del sistema pero con mas financiacion se podia mejorar todo.
-	\item Ajouter une base de donn\'ees dans l'interface de tous les acteurs
-	su club Balma pour avoir une tra\c abilit\'e de la
-	performance des athletes. Se communiquer avec le starting
-	block et manipuler ses donn\'ees. Rendre l'interface
-	multiplataforme.
+	\item Créer une base de donn\'ees dans l'interface de tous les acteurs
+	su club Balma pour avoir une tra\c cabilit\'e de la
+	performance des athletes. 
+	\item Établir une communication entre le starting
+	block et l'interface pour manipuler les donn\'ees.
+	\item Rendre l'interface multiplataforme.
 
 
     % \item Starting block: conectarlo por wifi a la interfaz para que se pueda mejar desde ahi de manera practica y sencilla. A peticion del club una base de datos no quedaria nada mal para organizar la informacion.
@@ -197,29 +194,47 @@ des outils pour avancer en teletravail.
 %-------------------------- * Obligaciones Tecnicas * --------------------------------
 \section{Devoirs Techniques}
 % Este proyecto tuvo muchas cosas desarrolladas en computador y muchisima programacion. Sin embargo tambie tuve mucha accion en el fablab de la fac para fabricar piezas en la impresora 3d, la cortadora laser y la maquina cnc para hacer unos circuitos.
-Ce projet a eu beaucoup des choses develop\'es en CAO et pas mal de programation, mais aussi 
-le travail sur le hardware a \'et\'e fait chez CampuFab avec la decoupe laser, la machine CNC,
-les imprimantes 3D et ses outils en general comme les perceuses, les pinces, etc.
+% Ce projet a eu beaucoup des choses develop\'es en CAO et pas mal de programation, mais aussi 
+% le travail sur le hardware a \'et\'e fait chez CampuFab avec la decoupe laser, la machine CNC,
+% les imprimantes 3D et ses outils en general comme les perceuses, les pinces, etc.
+\begin{par}
+	Dans ce projet j'ai dû utiliser des logiciels de CAO,
+	logiciels et outils de fabrication, outils de gestion
+	de version du code et des outils pour gerer le projet
+	et la documentation du même. Je n'étais pas obligé 
+	d'utiliser des certains logiciels mais le technicien m'a
+	conseillé d'utiliser des logiciels open source ou gratuit
+	si jamais l'université n'avais pas la license.
+\end{par}
 \subsection{Logiciels de CAO}
-Dans ce projet j'ai utilis\'e plusieurs logiciels de CAO. Pour la conception 
-electronique j'ai utilis\'e Eagle parce qu'il est gratuit et facile a utiliser.i
-Dans la figure \ref{img:eagle_all} il y a des captures d'ecran.
-En plus, j'ai utilis\'e FlatCAM pour la fabrication de circuits avec la machine CNC.
-% Los logiciel de CAO son muy importantes, para fabricar los circuitos, simularlos y disenhar su fabricacion. Como logiciel utilise Eagle (tambien porque era el que sabia usar). 
+
+\begin{par}
+	Comme logiciel de CAO electronique j'ai choisi Eagle parce qu'il
+	est open source et je l'avais utilisé precedement. D'ailleurs
+	le technicien du service electronique de l'université utilise
+	Eagle aussi donc nous pouvons eviter des problèmes de compatibilité.
+	Sur la figure \ref{img:eagle_all} vour trouverez des images.
+\end{par}
 \begin{figure}[!htb]
 	\centering
-	\subfigure[PCB du circuit]{\includegraphics [height=2in]{img/EagleBoard.png}
-	\label{img:eagle:board}}
 	\subfigure[Schema du circuit]{\includegraphics [height=2in]{img/EagleSchema.png}
 	\label{img:eagle:schema}}
+	\subfigure[PCB du circuit]{\includegraphics [height=2in]{img/EagleBoard.png}
+	\label{img:eagle:board}}
 	\caption{Captures d'Eagle}
 	\label{img:eagle_all}
 \end{figure}
+
+\begin{par}
+	Pour la fabrication des circuits avec une machine CNC j'ai
+	utilisé FlatCAM (image \ref{img:FlatCam}) parce qu'il est gratuit et la sa documentation
+	est facile a trouver en ligne.
+\end{par}
+% Los logiciel de CAO son muy importantes, para fabricar los circuitos, simularlos y disenhar su fabricacion. Como logiciel utilise Eagle (tambien porque era el que sabia usar). 
 % Para los dispositivos 3D utilise la plataforma online OnShape la cual es gratuita y tambien permita compartir los disenhos en 3D con todos los participantes del proyecto (si solo hubiera mas gente) y tambien gestionar las versiones. sur la bibliographie vous trouverez le repo avec les fichiers
-\newline
 \begin{par}
 	Pour la conception mecanique j'ai utilis\'e la plateforme \href{https://www.onshape.com/}{OnShape}
-	parce qu'elle est gratuit et permet de partager les conceptions au et a mesure du developpement.
+	parce qu'elle est gratuit et permet de partager les conceptions au fur et a mesure du developpement.
 	quelques captures d'ecran sur la figure \ref{img:onshape_all}.
 \end{par}
 \begin{figure}[!htb]
@@ -236,34 +251,35 @@ En plus, j'ai utilis\'e FlatCAM pour la fabrication de circuits avec la machine 
 `%Aqui coloca imagenes del repo asi como la url del repo
 \subsection{Service electronique de Paul Sabatier}
 % Para fabricar circuitos alguien me informo que puedo acceder al servicio de fabricacion electronica de la universidad, tuve que ponerme en contacto con el senhor guillaume Maffre quien me gui por el proceso. A mediados del mes de mayo cambiaron el proceso de metalizacion y al parecer no era tan efectivo como el anterior porque varios circuitos no tenian bien la metalizacion, es el proceso que conecta la capa de arriba con la de abajo. Ademas este proceso tomaba de 3 dias a una semana dependiando de la complejidad del pcb. Por lo cual decidi no usar este servicio a menos que fuera estrictamente necesario.
-L'universit\'e a une service de fabrication de PCB \`a  
-double couche lequel j'ai utilis\'e parce qu'il y a des 
-PCB tr\`es avec des chemins tr\`es compliqu\'es. 
-Au millieu du mois de Mai le service electronique a 
-chang\'e le process de metalisation qui n'est pas
-ma\^itriss\'e au fond par le technicien et plusieurs 
-circuits fabriqu\'es par eux n'ont pas eu la fiabilit\'e
-attend\'ee. En plus ce proces prenait vers une semaine
-d'attente de ma part donc j'ai decid\'e de ne utiliser
-ce service que si besoin estricte.
+\begin{par}
+	L'universit\'e a une service de fabrication des PCBs
+	lequel j'ai utilis\'e parce qu'il y a des 
+	PCBs qui avaient besoin de double couche de cuivre. 
+	Au millieu du mois de Mai le service electronique a 
+	chang\'e le procesus de metalisation qui n'est pas
+	ma\^itriss\'e au fond et alors plusieurs 
+	circuits fabriqu\'es par eux n'ont pas eu la fiabilit\'e
+	attendue. En plus, ce methode prenait vers une semaine
+	d'attente de ma part donc j'ai decid\'e de ne utiliser
+	ce service que si besoin stricte.
+\end{par}
 
-\subsection{Manufactura con herramientas de fablab}
+\subsection{Fabrication chez CampusFab}
 % El hecho de trabajar con hardware requiere muchas herramientas y espacio para trabajar, lo cual no tengo en casa. GraciajaDios la fac cuenta con el fablab del cual soy abone y me puedo en servir de todas sus herramientas y maquinas.
 \begin{par}
-	Pour travailler le hardware il faut avoir de la place pour travailer 
-	et des outils, lequels j'ai trouv\'e au CampuFab. J'\'etais d\'ej\`a
-	familiaris\'e avec l'endroit parce que je suis abonn\'e et donc j'ai
-	pu bien profiter de ce coin du monde. Dans les images \ref{img:CampusFAb}
+	Pour travailler le hardware j'ai choisi CampuFab parce que j'\'etais d\'ej\`a
+	familiaris\'e avec les outils qui s'y trouvent et parce qu'ils ont des horarires
+	flexibles. Dans l'image \ref{img:CampusFab}
 	et \ref{img:CircuitsCNCd}
 \end{par}
 
 % La primera herramienta que use fue la maquina cnc para fabricar unas pcb pequenhas. Este proceso lo hice con la ayuda del logiciel flatCAM y un simulador de maquinas cnc porque con la situacion sanitaria tenia que priorizar al maximo el teletrabajo.
 \begin{figure}[!htb]
 	\centering
+	\subfigure[FlatCAM]{\includegraphics[width=0.65\textwidth]{img/FlatCAM.png}
+	\label{img:FlatCam}}
 	\subfigure[Machine CNC]{\includegraphics[width=0.2\textwidth]{img/CNCRouter.jpg}
 	\label{img:RouterCNC}}
-	\subfigure[FlatCAM]{\includegraphics[width=0.65\textwidth]{img/FlatCAM.png}
-	\label{img:eagle:schema}}
 	\caption{Fabrication chez FabLab}
 	\label{img:CampusFab}
 \end{figure}
@@ -296,7 +312,7 @@ ce service que si besoin estricte.
 \end{figure}
 % La ultima herramienta que utilise fue la cortadora laser para hacer el soporte de las barieres IR y la nueva cajita del starting block (mas pequenha y tales)
 Un autre outil que j'ai utilis\'e c'\'etait la decoupe laser pour decouper du plexiglass.
-dans l'image \ref{img:barriere} on peut voir.
+Dans l'image \ref{img:barriere} on peut voir.
 
 
 \begin{figure}[!htb]
@@ -308,17 +324,17 @@ dans l'image \ref{img:barriere} on peut voir.
 \end{figure}
 % La impresora 3D tenia pensado usarla para hacer el temoin en PLA transparente y estuve imprimiento un cable chain para mejorar la robustez de los cables en el starting block.
 
-\begin{par}
-	J'ai failli utiliser l'imprimante 3D pour faire 
-	quelques details en fin du stage mais j'ai chop\'e
-	le covid les dernieres semaines du juillet.
-\end{par}
+% \begin{par}
+% 	J'ai failli utiliser l'imprimante 3D pour faire 
+% 	quelques pièces en fin du stage mais j'ai chop\'e
+% 	le covid les dernieres semaines du juillet.
+% \end{par}
 
-\subsection{Utilisation de github como gestor de proyecto}
+\subsection{Github}
 \begin{par}
 	Ce projet etait un projet avec une grande 
 	quantit\'e de programation dedans et j'ai choisi 
-	git comme outil de gestion de versions. En plus 
+	git comme outil de gestion de versions. En plus,
 	j'ai fait un repositoire sur Github pour avoir tout
 	bien organis\'e et centralis\'e sur une seul 
 	endroit.
@@ -327,9 +343,8 @@ dans l'image \ref{img:barriere} on peut voir.
 
 % Otra ventaja de github es que ofrece una pagina de wikis donde se puede dejar toda la documentacion por si alguien retoma el proyecto donde yo lo estoy dejando ahora mismo. Tambien tiene la seccion de gestion de proyectos que es parecida a slack donde pongo lo que voy haciendo poco a poco y el tutor de stage puede revisar mi trabajo poco a poco. 
 \begin{par}
-	Github nous offre une page de wikis pour le projet
-	et cela nous permet d'ecrire une documentation a la
-	mesure pour le projet. Dans cette section j'ai 
+	Github nous offre une page de wikis pour la
+	documentation du projet. Dans cette section j'ai 
 	pens\'e laisser toutes les instructions pour les 
 	developeurs et utilisateurs en general.
 \end{par}
@@ -361,11 +376,11 @@ dans l'image \ref{img:barriere} on peut voir.
 
 %-------------------------- * Seccion de resultados * --------------------------------
 
-\section{Resultados}
+\section{Results}
 % Los resultados se vieron afectados por varios factores ajenos al desarrollo del proyecto como mi rattrapage a mitad de junio, varias pcb que vinieron malas y faltando dos semanas para terminar el stage me dio covid y cuando pude salir el fablab estaba cerrado y solo me faltaba terminar de fabricar las piezas del temoin. Para colmo se quemaron 2 step up y no pude nisiquiera pude soldar los temoin (y habia uno que tenia unos vias que no hacian conexion, maldita sea). A pesar de todo eso pude avanzar mucho en otras cosas.
 \begin{par}
-	Le projet a eu un developement lent due ma manque
-	d'experience mais en general j'ai bien ger\'e le temp.
+	Le projet a eu un developement lent dû à ma manque
+	d'experience mais en géneral j'ai bien ger\'e le temp.
 	Les prob\`emes que j'ai eu ont \'et\'e \`a cause 
 	des cartes electroniques d\'efectueuses.
 \end{par}
@@ -377,8 +392,8 @@ dans l'image \ref{img:barriere} on peut voir.
 \end{par}
 \begin{par}
 	Comme dernier souci j'ai eu le covid en fin du 
-	stage et je n'ai pas pu finir quelques choses au
-	FabLab parce que j'ai du me confiner. Ces jours de
+	stage et je n'ai pas pu finir quelques choses chez
+	CampusFab parce que j'ai dû me confiner. Ces jours de
 	confinement j'ai avanc\'e la programation d'un
 	base de donn\'ees plus robuste et pr\^ete \`a 
 	utiliser m\^eme sans les prototypes.
@@ -386,19 +401,19 @@ dans l'image \ref{img:barriere} on peut voir.
 
 %-------------------
 
-\subsection{Raspberry como dock multifuncional}
+\subsection{Dock multiplataforme}
 % La raspberry como dock multifuncional es le mejor avance que hice ya que ahora tiene una base de datos que permite ingresar atletas, coachs y llevar un historal de todas las sesiones de entrenamiento. Ademas se conecta directamente al starting block y permite ver su estado de bateria. 
 % Tambien permite actualizar la interfaz directamente desde github, lo que permitiria venderlo como producto y actualizarlo con el pasar del tiempo.
 % Toda la informacion guardada es ademas exportable por si se quiere hacer un tratamiento de datos externo.
 
 \begin{par}
-	La raspberry comme dock multiplataforme est 
-	l'avancement le plus remarquable de mon stage. Elle
-	a une base de donn\'ees complete avec l'imformation
+	Le dock multiplataforme est 
+	l'avancement le plus remarquable de mon stage. Il 
+	a une base de donn\'ees complete avec l'information
 	de chaque coach et athlete. Sur l'image \ref{img:gui_all}
 	on peut voir la liste de seances et le graph g\'ener\'e
-	par la rapsberry.
-	Elle se connecte avec 
+	par le dock.
+	Il se connecte avec 
 	un smartphone, tablette ou m\^eme un ordinateur via
 	WiFi direct pour manipuler et voir les donn\'ees.
 	Sur l'image \ref{img:gui:landing-page} on peut voir
@@ -420,52 +435,107 @@ dans l'image \ref{img:barriere} on peut voir.
 	\subfigure[Liste de seances stock\'ees]{\includegraphics [height=2in]{img/SessionList}
 	\label{img:gui:session-list}}
 	\caption{Base de donn\'ees.}
-	\label{img:gui:base-donnees}
+	\label{img:gui_all}
 \end{figure}
 
+% \begin{par}
+% 	En plus, elle peut \^etre mise \`a jour avec github
+% 	et donc si on change des choses sur l'interface au 
+% 	niveau du graphisme ou de manipulation de don\'ees
+% 	de l'autre c\^ot\'e du monde, on peut voir ces 
+% 	changements sur la raspi.
+% \end{par}
 \begin{par}
-	En plus, elle peut \^etre mise \`a jour avec github
-	et donc si on change des choses sur l'interface au 
-	niveau du graphisme ou de manipulation de don\'ees
-	de l'autre c\^ot\'e du monde, on peut voir ces 
-	changements sur la raspi.
+	Malheureusement la partie de hardware pour connecter
+	les temoins et extraire les données n'a pas pu être
+	fini à cause du covid parce que je n'ai pas pu aller
+	chez CampusFab pour finir la fabrication.
+	% lastimosamente la parte de los temoins no la pude
+	% terminar por el covid y porque la mayoria de las 
+	% tarjetas electronicas del servicio de la fac vinieron
+	% con defectos.
 \end{par}
+
+\subsection*{Travail \`a futur}
+% Como mejora esta meterle una bateria y que esta cargue los temoins. Mostrar tambien la carga del propio aparato. y terminar la parte que se conecta con el temoin, la cual esta testeada con datos simulados que funcionan bien.
+% Otra mejora que tengo pensado ponerle es una opcion que permita un calibrage automatico de los sensores de fuerza para no tener que desarmar el dispositivo cada vez que se descalibre.
 \begin{par}
-	Toute l'information capt\'e par la 
+	La premier chose à ameliorer est avoir une baterie qui charge
+	les temoins et qui donne une bonne autonomie au dock et finir la
+	partie de conexion pour les temoins.
+	% Meterle una bateria para que cargue los temoins, hacerle la conexion para que se connecte con los temoins y 
+	% de paso que los cargue. Hacerle pruebas para calcular la autonomia de la bateria y la vaina.
 \end{par}
+% \begin{par}
 
-%\subsection*{Mejoras}
-%Como mejora esta meterle una bateria y que esta cargue los temoins. Mostrar tambien la carga del propio aparato. y terminar la parte que se conecta con el temoin, la cual esta testeada con datos simulados que funcionan bien.
-%Otra mejora que tengo pensado ponerle es una opcion que permita un calibrage automatico de los sensores de fuerza para no tener que desarmar el dispositivo cada vez que se descalibre.
-
-%%-------------------
-
-%\subsection{Startingblock 2.0}
-%El mayo cambio en el starting block en terminos de harwdware es su tamanho mas reducido y el uso de una bateria de ion de litio recargable directamente desde la cajita. Segun las pruebas de rendimiento el dispositivo consume aproximadamente unos 100mA de corriente de forma constante con pequenhos picos de corriente de 200mA por lo cual se puede estimar la duracion de la bateria. (aqui pones fotos del videito que grabaste)
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.5\textwidth]{img/StartingBlockCompleto.jpg}
-\caption{Starting Block}
-\label{img:sb:complete}
-\end{figure}
-\subsection*{Mejoras}
-Agregarle a la programacion el programa de calibracion (el cual ya viene listo en la libreria de los amplificadores) que se haga directamente desde la interfaz grafica.
-
-Otra cosa que no tuve en cuenta es el disenho que favorezca un depanage. Actualmente es muy complicado desarmar todo para revisar si algo falla, eso fue un error de disenho que no tuve en cuenta.
-Una ultima mejora es agregarle un capacitor que ayude a la bateria en los picos de corriente para aumentar la vida util de la bateria.
+% 	Algo que me gustaria agregarle es una parte de calibrage automatico de los sensores de presion
+% 	en el starting block
+% \end{par}
 
 %-------------------
 
-\subsection{Mejoras para los temoin}
-Los temoin y las barrieres IR tuvieron una mejora sustancial en terminos de usabilidad y componentes. Lastima que las pcb del protipo final vinieron con fallas y no se pudo armar un dispositivo final, ademas que habian unos step up que se quemaron y solo me quedaba uno y lo use para el starting block que ya estaba armado para tener una cosa que sirviera. Ademas de todo esto, la imposibilidad de ir al fablab la ultima semana me limito mucho porque tuve covid y aja eso me cago la vida.
-\subsection*{Mejoras}
-Basicamente falta armarlos y probarlos, ahi falle pero me perjudico la situacion sanitaria ya que esta semana tenia pensado hacer esas cosas.
+\subsection{Startingblock 2.0}
+% El mayo cambio en el starting block en terminos de harwdware es su tamanho mas reducido y el uso de una bateria de ion de litio recargable directamente desde la cajita. Segun las pruebas de rendimiento el dispositivo consume aproximadamente unos 100mA de corriente de forma constante con pequenhos picos de corriente de 200mA por lo cual se puede estimar la duracion de la bateria. (aqui pones fotos del videito que grabaste)
+\begin{par}
+	La boîte electronique du starting block est plus 
+	petite et plus efficace d'un point de vue energetique.
+	Maintenant il a un chargeur interne avec une conexion
+	mirco-usb qui permet le charger avec un chargeur
+	commercial. Image \ref{img:sb:complete}
+\end{par}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/StartingBlockCompleto.jpg}
+	\caption{Starting Block}
+	\label{img:sb:complete}
+\end{figure}
+
+\subsection*{Travail Futur}
+\begin{par}
+	Ajouter un script de calibration lanc\'e par le dock. 
+	Ameliorer la conception pour un possible depanage et
+	un condensateur qui aide
+	la batterie dans les piques de courant.
+\end{par}
+% Agregarle a la programacion el programa de calibracion (el cual ya viene listo en la libreria de los amplificadores) que se haga directamente desde la interfaz grafica.
+
+% Otra cosa que no tuve en cuenta es el disenho que favorezca un depanage. Actualmente es muy complicado desarmar todo para revisar si algo falla, eso fue un error de disenho que no tuve en cuenta.
+% Una ultima mejora es agregarle un capacitor que ayude a la bateria en los picos de corriente para aumentar la vida util de la bateria.
+
+%-------------------
+
+\subsection{Temoin et Course de relais}
+% Los temoin y las barrieres IR tuvieron una mejora sustancial en terminos de usabilidad y componentes. Lastima que las pcb del protipo final vinieron con fallas y no se pudo armar un dispositivo final, ademas que habian unos step up que se quemaron y solo me quedaba uno y lo use para el starting block que ya estaba armado para tener una cosa que sirviera. Ademas de todo esto, la imposibilidad de ir al fablab la ultima semana me limito mucho porque tuve covid y aja eso me cago la vida.
+\begin{par}
+	Les temoins et les barrieres IR ont eu une upgrade 
+	enorme avec les nouveaux composants. Fâcheusement
+	les cartes electroniques faites par l'université
+	avaient des defauts de fabrication et quelques
+	composants de puissance ont br\^ul\'e quand le service
+	de commandes de l'université est allé en congés.
+\end{par}
+\subsection*{Travail Futur}
+\begin{par}
+	Il me manque monter et tester les prototypes, mais j'ai déjà pensé
+	à faire une conception un peut plus adapté au depanade rapide.
+\end{par}
+% Basicamente falta armarlos y probarlos, ahi falle pero me perjudico la situacion sanitaria ya que esta semana tenia pensado hacer esas cosas.
 
 %-------------------
 
 \subsection{Documentacion del proyecto}
-La documentacion actual es la de la version del poryecto TER y me falta agregarle todas las cosas que desarrolle hasta este momento. Viendo que utilise un framework web y que no todo el mundo sera capaz de utilizar este framework intente factorizar las funciones al maximo para que cualquier pueda modificar las funciones que hacen las cosas importantes sin tener que meterse directamente con el framework.
-Para documentar tambien utilise doxygen que genero un archivo pdf con la explicacion de todas las funciones en C.
+
+\begin{par}
+	La documentation du projet se trouve sur la page de wikis du repo
+	sur github. Elle a des sections pour les developeurs futurs et pour
+	les utilisateurs à futur
+\end{par}
+\begin{par}
+	Pour la documentation des codes en C et C++ j'ai utilisé d'oxygen.
+\end{par}
+% La documentacion actual es la de la version del poryecto TER y me falta agregarle todas las cosas que desarrolle hasta este momento. Viendo que utilise un framework web y que no todo el mundo sera capaz de utilizar este framework intente factorizar las funciones al maximo para que cualquier pueda modificar las funciones que hacen las cosas importantes sin tener que meterse directamente con el framework.
+% Para documentar tambien utilise doxygen que genero un archivo pdf con la explicacion de todas las funciones en C.
 
 \begin{figure}[!htb]
 	\centering
@@ -474,8 +544,13 @@ Para documentar tambien utilise doxygen que genero un archivo pdf con la explica
 	\label{img:git:wikis1}
 \end{figure}
 
-\subsection*{Mejoras}
-Me encantaria documentar todo el framework de django pero es un trabajo largo y duro, asi que lo dejo como trabajo futuro.
+\subsection*{Travail Futur}
+\begin{par}
+	Vu que j'utilise Django, un framework optimisé pour la web, j'aimerais 
+	documenter le fonctionement du framework pour les developeurs qui ne
+	sont pas habitués a ce type de fonctionement.
+\end{par}
+% Me encantaria documentar todo el framework de django pero es un trabajo largo y duro, asi que lo dejo como trabajo futuro.
 
 %\begin{figure}[!htb]
 %\centering
@@ -515,9 +590,16 @@ Me encantaria documentar todo el framework de django pero es un trabajo largo y 
 	pour le projet.
 \end{par}
 \begin{par}
-	C'etait interesant aussi faire la conception,
-	fabrication et montage de chaque un des appareils
-	du projet.
+	% C'etait interesant aussi faire la conception,
+	% fabrication et montage de chaque un des appareils
+	% du projet.
+	J'ai bien aimé faire partie du conception, fabrication et
+	montage de chaque appareil.
+\end{par}
+\begin{par}
+	Je vais suivre ce projet en tant que stagiaire pour
+	l'ann\'ee prochaine et faire une alternance (si possible)
+	pour faire toutes les ameliorations propos\'es precedement.
 \end{par}
 
 %debes hacer esto para meter archivos de otro lado
