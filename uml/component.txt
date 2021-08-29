@@ -17,7 +17,7 @@ package "In Track Elements"{
 	[End Race Barriere] as barriere4
 
 }
-package "Dock"{
+database "Dock"{
 	database Raspberry
 	[Serial To USB] as serial
 	
@@ -27,27 +27,32 @@ package "Starting_Block"{
 	[Force Sensor Right Foot] as force_right
 	[ESP32] as esp32
 } 
+[Smart Device] as dev
+
 force_left --> esp32
 force_right --> esp32
-esp32 --> Raspberry : WiFi Direct
+esp32 <--> Raspberry : WiFi-Direct
 
 Athletes --> Temoin
 Athletes --> Starting_Block
 
-barriere1 --> irrecv
-barriere2 --> irrecv
-barriere3 --> irrecv
-barriere4 --> irrecv
+barriere1 --> irrecv : IR signal
+barriere2 --> irrecv : IR signal
+barriere3 --> irrecv : IR signal
+barriere4 --> irrecv : IR signal
 
-accel --> microc
-microc --> sdcard
-touch1 --> microc
-touch2 --> microc
-microc --> motor 
-irrecv --> microc 
-microc --> led_rgb 
+accel --> microc : I2C
+microc <--> sdcard : SPI
+touch1 --> microc :ISR
+touch2 --> microc :ISR
+microc --> motor : PWM
+irrecv --> microc : ISR
+microc --> led_rgb :PWM
 
 microc --> serial : Serial Connection
-serial --> Raspberry
-Raspberry --> Interface
+serial --> Raspberry : USB
+dev <--> Dock : Wifi-Direct
+dev <--> Coach
+'Dock --> Interface 
+'Coach <--> Interface : Smart device
 @enduml
