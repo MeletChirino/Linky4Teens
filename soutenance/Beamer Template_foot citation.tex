@@ -21,7 +21,7 @@
 \let\olditem\item
 \renewcommand\item{\olditem\justifying}
 
-\usepackage[backend=biber]{biblatex}
+\usepackage{natbib}
 %\bibliographystyle{ieeetr}
 \addbibresource{references.bib}
 
@@ -70,7 +70,9 @@ Le projet Linky4Teens cherche à améliorer la performance des jeunes athlètes.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{images/IoTDefinitionsBanner_v2}
+	\subfigure[Schéma du circuit]{\includegraphics [height=2in]{images/IoTDefinitionsBanner_v2}
+	\label{img:eagle:schema}}
+	% \includegraphics[width=0.9\linewidth]{images/IoTDefinitionsBanner_v2}
 	\label{fig:iotdefinitionsbannerv2}
 \end{figure}
 \end{frame}
